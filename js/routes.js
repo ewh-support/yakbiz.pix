@@ -17,6 +17,11 @@ routes = [{
     }
   }
 },
+//seller after sign in
+{
+  path: '/seller-list/',
+  componentUrl: './pages/seller/seller-list.html'
+},
 {
   path: '/gop-y/',
   componentUrl: './pages/request.html'

@@ -1,0 +1,140 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">Product List</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block">
+                <div class="row">
+                    <button class="col button button-fill">Add Items</button>
+                    <button class="col button button-fill">Edit Account</button>
+                </div>
+            </div>
+            <!-- Card -->
+            <div class="block-title">Computer</div>
+            <div class="card demo-card-header-pic">
+                <div class="row no-gap">
+                    <div class="col-30">
+                        <div style="background-image:url(http://lorempixel.com/1000/600/nature/3/); height: 20vw;" valign="bottom" class="card-header">Journey To Mountains</div>
+                    </div>
+                    <div class="col-50">
+                        <p class="date">Posted on January 21, 2015</p>
+                        <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis. Phasellus
+                            quis nibh hendrerit...</p>
+                    </div>
+                    <div class="col-20">
+                        <button class="col button button-fill">Select</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="block-title">Phone</div>
+            <div class="card demo-card-header-pic">
+                    <div class="row no-gap">
+                        <div class="col-30">
+                            <div style="background-image:url(http://lorempixel.com/1000/600/nature/3/); height: 20vw;" valign="bottom" class="card-header">Journey To Mountains</div>
+                        </div>
+                        <div class="col-50">
+                            <p class="date">Posted on January 21, 2015</p>
+                            <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis. Phasellus
+                                quis nibh hendrerit...</p>
+                        </div>
+                        <div class="col-20">
+                            <button class="col button button-fill">Select</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</template>
+<style>
+    p {
+        margin: 10px;
+    }
+</style>
+<script>
+    return {
+        // Lifecycle Hooks
+        beforeCreate() {
+            //console.log('componentBeforeCreate', this)
+        },
+        created() {
+            //console.log('componentCreated', this)
+        },
+        beforeMount() {
+            //console.log('componentBeforeMount', this)
+        },
+        mounted() {
+            //console.log('componentMounted', this);
+        },
+        beforeDestroy() {
+            //console.log('componentBeforeDestroy', this);
+        },
+        destroyed() {
+            //console.log('componentDestroyed', this);
+        },
+        // Component Data
+        data: function () {
+            // Must return an object
+            return {
+                name: 'Jimmy',
+                age: 25,
+                like: ['Tennis', 'Chess', 'Football'],
+            }
+        },
+        // Component Methods
+        methods: {
+            openAlert: function () {
+                var self = this;
+                self.$app.dialog.alert('Hello World');
+            },
+        },
+        // Page Events
+        on: {
+            pageMounted: function (e, page) {
+                //console.log('pageMounted', page);
+            },
+            pageInit: function (e, page) {
+                console.log('pageInit', page);
+                //get product https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE/api/v1/seller/products
+                //access token d9b99b75a96d03d09c67d5330063cec9d669f5fbf96c4c6647e8ab11e041862b3a0ec5b395c1a5d6ed7ca812c3114a815493e3a479327987044ab10c127eff64a41df39bf9a07d2cf7a447263e0180b537da847d87a21a0b52c64e8d
+                var url = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE/api/v1/seller/products';
+                const tokenStr =
+                    'd9b99b75a96d03d09c67d5330063cec9d669f5fbf96c4c6647e8ab11e041862b3a0ec5b395c1a5d6ed7ca812c3114a815493e3a479327987044ab10c127eff64a41df39bf9a07d2cf7a447263e0180b537da847d87a21a0b52c64e8d';
+                axios.get(url, {
+                    headers: {
+                        "Authorization": `Bearer ${tokenStr}`
+                    }
+                }).then(res => {
+                    console.log('res', res);
+                }).catch(err => {
+                    console.log('err', err);
+                })
+
+            },
+            pageBeforeIn: function (e, page) {
+                //console.log('pageBeforeIn', page);
+            },
+            pageAfterIn: function (e, page) {
+                //console.log('pageAfterIn', page);
+            },
+            pageBeforeOut: function (e, page) {
+                //console.log('pageBeforeOut', page);
+            },
+            pageAfterOut: function (e, page) {
+                //console.log('pageAfterOut', page);
+            },
+            pageBeforeRemove: function (e, page) {
+                //console.log('pageBeforeRemove', page);
+            },
+        }
+    }
+</script>
