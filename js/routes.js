@@ -28,6 +28,10 @@ routes = [{
   url: './pages/seller/seller-add-item.html'
 },
 {
+  path: '/seller-upload-image/',
+  url: './pages/seller/seller-upload-image.html'
+},
+{
   path: '/gop-y/',
   componentUrl: './pages/request.html'
 },
