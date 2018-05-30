@@ -22,6 +22,11 @@ routes = [{
   path: '/seller-list/',
   componentUrl: './pages/seller/seller-list.html'
 },
+//seller add items
+{
+  path: '/seller-add-item/',
+  componentUrl: './pages/seller/seller-add-item.html'
+},
 {
   path: '/gop-y/',
   componentUrl: './pages/request.html'
