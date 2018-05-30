@@ -25,7 +25,7 @@ routes = [{
 //seller add items
 {
   path: '/seller-add-item/',
-  componentUrl: './pages/seller/seller-add-item.html'
+  url: './pages/seller/seller-add-item.html'
 },
 {
   path: '/gop-y/',

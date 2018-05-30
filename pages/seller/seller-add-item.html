@@ -1,125 +1,133 @@
-<template>
-    <div class="page">
-        <div class="navbar">
-            <div class="navbar-inner sliding">
-                <div class="left">
-                    <a href="#" class="link back">
-                        <i class="icon icon-back"></i>
-                        <span class="ios-only">Back</span>
-                    </a>
-                </div>
-                <div class="title">Add Items</div>
+<div class="page">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Back</span>
+                </a>
             </div>
-        </div>
-        <div class="page-content">
-            <div class="block">
-                <div class="row">
-                    <button class="col button button-fill">Add Items</button>
-                    <button class="col button button-fill">Edit Account</button>
-                </div>
-            </div>
-            <!-- Card -->
-            <div class="block-title">Computer</div>
-            <div class="card demo-card-header-pic">
-                <div class="row no-gap">
-                    <div class="col-30">
-                        <div style="background-image:url(http://lorempixel.com/1000/600/nature/3/); height: 20vw;" valign="bottom" class="card-header">Journey To Mountains</div>
-                    </div>
-                    <div class="col-50">
-                        <p class="date">Posted on January 21, 2015</p>
-                        <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis. Phasellus
-                            quis nibh hendrerit...</p>
-                    </div>
-                    <div class="col-20">
-                        <button class="col button button-fill">Select</button>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="block-title">Phone</div>
-            <div class="card demo-card-header-pic">
-                    <div class="row no-gap">
-                        <div class="col-30">
-                            <div style="background-image:url(http://lorempixel.com/1000/600/nature/3/); height: 20vw;" valign="bottom" class="card-header">Journey To Mountains</div>
-                        </div>
-                        <div class="col-50">
-                            <p class="date">Posted on January 21, 2015</p>
-                            <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis. Phasellus
-                                quis nibh hendrerit...</p>
-                        </div>
-                        <div class="col-20">
-                            <button class="col button button-fill">Select</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="title">Add Items</div>
         </div>
     </div>
-</template>
-<style>
-    p {
-        margin: 10px;
-    }
-</style>
-<script>
-    return {
-        // Lifecycle Hooks
-        beforeCreate() {
-            //console.log('componentBeforeCreate', this)
-        },
-        created() {
-            //console.log('componentCreated', this)
-        },
-        beforeMount() {
-            //console.log('componentBeforeMount', this)
-        },
-        mounted() {
-            //console.log('componentMounted', this);
-        },
-        beforeDestroy() {
-            //console.log('componentBeforeDestroy', this);
-        },
-        destroyed() {
-            //console.log('componentDestroyed', this);
-        },
-        // Component Data
-        data: function() {
-            // Must return an object
-            return {
-                name: 'Jimmy',
-                age: 25,
-                like: ['Tennis', 'Chess', 'Football'],
-            }
-        },
-        // Component Methods
-        methods: {
-            openAlert: function() {
-                var self = this;
-                self.$app.dialog.alert('Hello World');
-            },
-        },
-        // Page Events
-        on: {
-            pageMounted: function(e, page) {
-                //console.log('pageMounted', page);
-            },
-            pageInit: function(e, page) {
-                // console.log('pageInit', page);
-            },
-            pageBeforeIn: function(e, page) {
-                //console.log('pageBeforeIn', page);
-            },
-            pageAfterIn: function(e, page) {
-                //console.log('pageAfterIn', page);
-            },
-            pageBeforeOut: function(e, page) {
-                //console.log('pageBeforeOut', page);
-            },
-            pageAfterOut: function(e, page) {
-                //console.log('pageAfterOut', page);
-            },
-            pageBeforeRemove: function(e, page) {
-                //console.log('pageBeforeRemove', page);
-            },
-        }
-    }
-</script>
+    <div class="page-content">
+        <form class="list form-store-data" id="demo-form">
+            <ul>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Category</div>
+                        <div class="item-input-wrap input-dropdown-wrap">
+                            <select name="category" placeholder="Please choose...">
+                                <option value="">A</option>
+                                <option value="">B</option>
+                                <option value="">C</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Sub Category</div>
+                        <div class="item-input-wrap input-dropdown-wrap">
+                            <select name="sub-category" placeholder="Please choose...">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Name</div>
+                        <div class="item-input-wrap">
+                            <input name="name" type="text" placeholder="Your name">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Password</div>
+                        <div class="item-input-wrap">
+                            <input name="password" type="password" placeholder="Your password">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">E-mail</div>
+                        <div class="item-input-wrap">
+                            <input name="email" type="email" placeholder="Your e-mail">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">URL</div>
+                        <div class="item-input-wrap">
+                            <input name="url" type="url" placeholder="URL">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Phone</div>
+                        <div class="item-input-wrap">
+                            <input name="phone" type="tel" placeholder="Your phone number">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Gender</div>
+                        <div class="item-input-wrap input-dropdown-wrap">
+                            <select name="gender" placeholder="Please choose...">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Birthday</div>
+                        <div class="item-input-wrap">
+                            <input name="birthday" type="date" value="2014-04-30" placeholder="Please choose...">
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Date time</div>
+                        <div class="item-input-wrap">
+                            <input name="date" type="datetime-local" placeholder="Please choose...">
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">Range</div>
+                        <div class="item-input-wrap">
+                            <div class="range-slider range-slider-init" data-label="true">
+                                <input name="range" type="range" value="50" min="0" max="100" step="1">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">About you</div>
+                        <div class="item-input-wrap">
+                            <textarea name="bio" class="resizable" placeholder="Bio"></textarea>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
