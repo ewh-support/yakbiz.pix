@@ -31,6 +31,11 @@ routes = [{
   path: '/seller-upload-image/',
   url: './pages/seller/seller-upload-image.html'
 },
+//buyer
+{
+  path: '/buyer-main/',
+  componentUrl: './pages/buyer/buyer-main.html'
+},
 {
   path: '/gop-y/',
   componentUrl: './pages/request.html'
