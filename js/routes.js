@@ -37,6 +37,10 @@ routes = [{
   componentUrl: './pages/buyer/buyer-main.html'
 },
 {
+  path: '/buyer-company-list/',
+  componentUrl: './pages/buyer/buyer-company-list.html'
+},
+{
   path: '/gop-y/',
   componentUrl: './pages/request.html'
 },
