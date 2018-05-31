@@ -53,6 +53,13 @@ routes = [{
   componentUrl: './pages/buyer/buyer-pay-by-wing-card.html'
 },
 {
+  path: '/buyer-devivery-infomation/',
+  componentUrl: './pages/buyer/buyer-delivery-infomation.html'
+},
+
+
+//
+{
   path: '/gop-y/',
   componentUrl: './pages/request.html'
 },
