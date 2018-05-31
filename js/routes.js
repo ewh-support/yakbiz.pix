@@ -41,6 +41,10 @@ routes = [{
   componentUrl: './pages/buyer/buyer-company-list.html'
 },
 {
+  path: '/buyer-select/',
+  componentUrl: './pages/buyer/buyer-select.html'
+},
+{
   path: '/buyer-pay-by/',
   componentUrl: './pages/buyer/buyer-pay-by.html'
 },
