@@ -64,9 +64,15 @@ routes = [{
   path: '/buyer-items-select/',
   componentUrl: './pages/buyer/buyer-items-select.html'
 },
-
-
-//
+{
+  path: '/buyer-product-info/',
+  componentUrl: './pages/buyer/buyer-product-info.html'
+},
+{
+  path: '/buyer-product-description/',
+  componentUrl: './pages/buyer/buyer-product-description.html'
+},
+//old
 {
   path: '/gop-y/',
   componentUrl: './pages/request.html'
