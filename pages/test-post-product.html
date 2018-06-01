@@ -1,0 +1,98 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="back link">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">Test POST</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <form class="list form-store-data" id="form-request">
+                <ul>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">name</div>
+                            <div class="item-input-wrap">
+                                <input type="text" name="name" placeholder="name">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">company</div>
+                            <div class="item-input-wrap">
+                                <input type="text" name="company" placeholder="company">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+              
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">Price</div>
+                            <div class="item-input-wrap">
+                                <input type="text" name="prices" placeholder="Price">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">Description</div>
+                            <div class="item-input-wrap">
+                                <textarea name="description" placeholder="Description"></textarea>
+                                <span class="input-clear-button"></span>
+                                
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">imgURL</div>
+                            <div class="item-input-wrap">
+                                <input type="text" name="image" placeholder="Image URL">
+                                <span class="input-clear-button"></span>
+                                
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </form>
+            <div class="block block-strong row">
+                <div class="col"></div>
+                <div class="col">
+                    <a class="button button-fill convert-form-to-data" href="#">Add</a>
+                </div>
+                <div class="col"></div>
+                
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        on: { 
+            pageInit: function (e, page) {
+                $$('.convert-form-to-data').on('click', function () {
+                    var formData = app.form.convertToData('#form-request');
+                    console.log(JSON.stringify(formData));
+                    axios.defaults.baseURL = 'http://128.199.153.64:3500/api';
+                    axios.post('/Products/', formData)
+                        .then(function (response) {
+                            console.log('res', response);
+                        })
+                        .catch(function (error) {
+                            console.log('err', error);
+                        })
+                });
+            },
+        }
+    }
+</script>

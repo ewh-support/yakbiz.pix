@@ -1,0 +1,43 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="back link">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">Test GET</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block block-strong row">
+                <div class="col"></div>
+                <div class="col">
+                    <a class="button button-fill convert-form-to-data" href="#">GET</a>
+                </div>
+                <div class="col"></div>
+            </div>
+
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        on: {
+            pageInit: function (e, page) {
+                $$('.convert-form-to-data').on('click', function () {
+                    axios.defaults.baseURL = 'http://128.199.153.64:3500/api';
+                    axios.get('/Products/')
+                        .then(function (response) {
+                            console.log('res', response);
+                        })
+                        .catch(function (error) {
+                            console.log('err', error);
+                        })
+                });
+            },
+        }
+    }
+</script>

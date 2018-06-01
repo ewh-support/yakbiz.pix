@@ -97,6 +97,16 @@ routes = [{
   path: '/gop-y/',
   componentUrl: './pages/request.html'
 },
+//test POST
+{
+  path: '/test-post-product/',
+  componentUrl: './pages/test-post-product.html'
+},
+//test GET
+{
+  path: '/test-get-product/',
+  componentUrl: './pages/test-get-product.html'
+},
 {
   path: '/map/',
   url: './pages/map.html',
