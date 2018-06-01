@@ -155,7 +155,7 @@
                 <div class="row">
                     <div class="col"></div>
                     <div class="col">
-                        <a href="/buyer-login/" class="col button button-fill">Buy now</a>
+                        <a href="/buyer-pay-by/" class="col button button-fill" @click="checkLogin">Buy now</a>
                     </div>
                     <div class="col"></div>
                 </div>
@@ -205,6 +205,13 @@
                 var self = this;
                 self.$app.dialog.alert('Hello World');
             },
+            //check login
+            checkLogin: function (){
+                console.log('localStorage.isAuthenticated', localStorage.isAuthenticated);
+                if(localStorage.isAuthenticated){
+
+                }
+            }
         },
         // Page Events
         on: {

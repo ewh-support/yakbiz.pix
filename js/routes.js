@@ -39,6 +39,10 @@ routes = [{
   path: '/seller-edit-account/',
   componentUrl: './pages/seller/seller-edit-account.html'
 },
+{
+  path: '/seller-product-detail/',
+  componentUrl: './pages/seller/seller-product-detail.html'
+},
 //buyer
 {
   path: '/buyer-main/',
