@@ -1,74 +1,107 @@
 <template>
-        <div class="page">
-            <div class="navbar">
-                <div class="navbar-inner sliding">
-                    <div class="left">
-                        <a href="#" class="link back">
-                            <i class="icon icon-back"></i>
-                            <span class="ios-only">Back</span>
-                        </a>
-                    </div>
-                    <div class="title">Delivery Information</div>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
                 </div>
+                <div class="title">Delivery Information</div>
             </div>
-            <div class="page-content">
-                <div class="block-title">Delivery Information</div>
+        </div>
+        <div class="page-content">
+            <div class="block-title">Delivery Information</div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <div class="card demo-facebook-card">
+                        <div class="card-content">
+                            <a href="/buyer-pay-by-wing-card/">
+                                <img src="https://sv1.uphinhnhanh.com/images/2018/05/30/wing-card.jpg" width="100%" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+
+            <div class="list inline-labels no-hairlines-md">
+                <ul>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">Name</div>
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="Type your name">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">Phone</div>
+                            <div class="item-input-wrap">
+                                <input type="tel" placeholder="Type your phone">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">Address</div>
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="Type your address">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="block">
                 <div class="row">
                     <div class="col"></div>
                     <div class="col">
-                        <div class="card demo-facebook-card">
-                            <div class="card-content">
-                                <a href="/buyer-pay-by-wing-card/">
-                                    <img src="https://sv1.uphinhnhanh.com/images/2018/05/30/wing-card.jpg" width="100%" />
-                                </a>
-                            </div>
-                        </div>
+                        <!-- <a href="#" class="button button-raised" @click="showToastTop">Toast on Top</a> -->
+                        <a href="#" class="button button-fill" @click="showToastTop">Submit</a>
                     </div>
                     <div class="col"></div>
                 </div>
-    
-                <div class="list inline-labels no-hairlines-md">
-                    <ul>
-                        <li class="item-content item-input">
-                            <div class="item-inner">
-                                <div class="item-title item-label">Name</div>
-                                <div class="item-input-wrap">
-                                    <input type="text" placeholder="Type your name">
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input">
-                            <div class="item-inner">
-                                <div class="item-title item-label">Phone</div>
-                                <div class="item-input-wrap">
-                                    <input type="tel" placeholder="Type your phone">
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input">
-                            <div class="item-inner">
-                                <div class="item-title item-label">Address</div>
-                                <div class="item-input-wrap">
-                                    <input type="text" placeholder="Type your address">
-                                    <span class="input-clear-button"></span>
-                                </div>
-                            </div>
-                        </li>
-                      
-                    </ul>
-                </div>
-    
-                <div class="block">
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col">
-                            <a href="/buyer-computer-select/" class="button button-fill">Submit</a>
-                        </div>
-                        <div class="col"></div>
-                    </div>
-                </div>
             </div>
         </div>
+    </div>
 </template>
+<script>
+    return {
+        methods: {
+            showToastTop: function () {
+                var self = this;
+                // Create toast
+                if (!self.toastTop) {
+                    self.toastTop = self.$app.toast.create({
+                        text: 'Successfully',
+                        position: 'top',
+                        closeTimeout: 2000,
+                    });
+                }
+                // Open it
+                self.toastTop.open();
+            }
+          
+        },
+        on: {
+            pageBeforeOut: function () {
+                var self = this;
+                self.$app.toast.close();
+            },
+            pageBeforeRemove: function () {
+                var self = this;
+                // Destroy toasts when page removed
+                if (self.toastTop) self.toastTop.destroy();
+              
+            },
+        }
+    }
+</script>

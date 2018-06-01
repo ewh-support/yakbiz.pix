@@ -10,14 +10,13 @@ var app = new Framework7({
   // App root data
   data: function () {
     return {
-      apibackend : 'http://103.199.18.44:2990/api',
+      apibackend: 'http://103.199.18.44:2990/api',
       user: {
         firstName: 'John',
         lastName: 'Doe',
       },
       // Demo products for Catalog section
-      products: [
-        {
+      products: [{
           id: '1',
           title: 'Apple iPhone 8',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.'
@@ -87,7 +86,7 @@ $$('#my-signup-screen .signup-button').on('click', function () {
   return;
   axios.post('/Users', formData)
     .then(function (response) {
-        console.log('Đăng Ký thành công')
+      console.log('Đăng Ký thành công')
       localStorage.isAuthenticated = 'true';
       localStorage.username = data.username;
       localStorage.accessToken = data.id;
@@ -99,8 +98,8 @@ $$('#my-signup-screen .signup-button').on('click', function () {
       return;
     })
 
-    app.popup.close('#my-signup-screen');
-    app.loginScreen.close('#my-login-screen'); //Bao: đóng luôn popup đăng nhập đã mở nếu có
+  app.popup.close('#my-signup-screen');
+  app.loginScreen.close('#my-login-screen'); //Bao: đóng luôn popup đăng nhập đã mở nếu có
 });
 
 $$('#my-login-screen .login-button').on('click', function () {
@@ -117,7 +116,10 @@ function login() {
   var password = $$('#my-login-screen [name="password"]').val();
 
   //easyweb
-  var credentials = { username: username, password: password }; //đặt tên là credentials: thông tin bảo mật
+  var credentials = {
+    username: username,
+    password: password
+  }; //đặt tên là credentials: thông tin bảo mật
 
   axios.post('/Users/login', credentials)
     .then(function (response) {
@@ -140,6 +142,7 @@ function login() {
       console.log(error);
     });
 }
+
 function getUserInfo() {
   console.log('getUserInfo()')
   if (localStorage.isAuthenticated !== 'true') {
@@ -164,10 +167,10 @@ function getUserInfo() {
 
 function getNews() {
   axios.get('/BaiViets', {
-    params: {
-      trangThai: PUBLISHED
-    }
-  })
+      params: {
+        trangThai: PUBLISHED
+      }
+    })
     .then(function (response) {
       console.log('get news', response);
     })

@@ -31,6 +31,14 @@ routes = [{
   path: '/seller-upload-image/',
   url: './pages/seller/seller-upload-image.html'
 },
+{
+  path: '/seller-sign-up/',
+  url: './pages/seller/seller-sign-up.html'
+},
+{
+  path: '/seller-edit-account/',
+  url: './pages/seller/seller-edit-account.html'
+},
 //buyer
 {
   path: '/buyer-main/',
@@ -71,6 +79,14 @@ routes = [{
 {
   path: '/buyer-product-description/',
   componentUrl: './pages/buyer/buyer-product-description.html'
+},
+{
+  path: '/buyer-login/',
+  componentUrl: './pages/buyer/buyer-login.html'
+},
+{
+  path: '/buyer-sign-up/',
+  componentUrl: './pages/buyer/buyer-sign-up.html'
 },
 //old
 {
