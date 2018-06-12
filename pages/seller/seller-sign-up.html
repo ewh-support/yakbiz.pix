@@ -14,7 +14,7 @@
     <div class="page-content">
       <div class="block-title">Sign up Seller Account</div>
       <div class="block">
-        <form class="list">
+        <form class="list form-store-data" id="form-sign-up-seller">
           <ul>
             <li class="item-content item-input">
               <div class="item-inner">
@@ -89,3 +89,45 @@
     </div>
   </div>
 </template>
+<script>
+  return {
+    on: {
+      pageInit: function (e, page) {
+        // Create notification with click to close
+        var notificationClickToClose = app.notification.create({
+          // icon: '<i class="icon demo-icon">7</i>',
+          title: 'Notification',
+          titleRightText: 'now',
+          subtitle: 'Sign up failed!',
+          text: 'Click me to close',
+          closeOnClick: true,
+        })
+
+        $$('.convert-form-to-data').on('click', function () {
+          console.log('POST');
+          var formData = app.form.convertToData('#form-sign-up-seller');
+          formData.user_type = 2;
+          console.log(JSON.stringify(formData));
+          if (formData.password === formData.confirm_password) {
+            // axios.defaults.baseURL = 'http://128.199.153.64:3500/api';
+            axios.defaults.baseURL =
+              'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+            axios.post('/api/v1/auth/register', formData)
+              .then(function (response) {
+                console.log('res', response);
+              })
+              .catch(function (error) {
+                console.log('err', error);
+              })
+          } else {
+            console.log('not match');
+            notificationClickToClose.open();
+          }
+
+        });
+
+
+      }
+    }
+  }
+</script>

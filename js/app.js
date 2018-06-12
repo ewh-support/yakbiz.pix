@@ -45,6 +45,8 @@ var app = new Framework7({
 });
 
 // Init/Create views
+var mainView = app.views.create('.view-main');
+
 var homeView = app.views.create('#view-home', {
   url: '/'
 });

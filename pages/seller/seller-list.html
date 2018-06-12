@@ -18,7 +18,7 @@
                     <a href="/seller-edit-account/" class="col button button-fill">Edit Account</a>
                 </div>
             </div>
-
+            
             <div class="block-title">Computer</div>
             <div class="card demo-card-header-pic">
                 <div class="row no-gap">
@@ -274,9 +274,7 @@
         data: function () {
             // Must return an object
             return {
-                name: 'Jimmy',
-                age: 25,
-                like: ['Tennis', 'Chess', 'Football'],
+                
             }
         },
         // Component Methods
@@ -292,7 +290,15 @@
                 //console.log('pageMounted', page);
             },
             pageInit: function (e, page) {
-                // console.log('pageInit', page);
+                //console.log('pageInit', page);
+                let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+                axios.defaults.baseURL = pixUrl;
+                axios.get('api/v1/seller/products').then(res =>{
+                    console.log('res', res);
+                }).catch(err=>{
+                    console.log('err', err);
+                })
+
             },
             pageBeforeIn: function (e, page) {
                 //console.log('pageBeforeIn', page);
