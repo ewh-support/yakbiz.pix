@@ -81,7 +81,7 @@ $$('#seller-button').on('click', function (e) {
   if (localStorage.isAuthenticated === 'true')
     app.views.main.router.navigate('/seller-list/');
   else {
-    app.loginScreen.open('#my-login-screen');
+    app.loginScreen.open('#my-login-screen'); 
 
   }
 

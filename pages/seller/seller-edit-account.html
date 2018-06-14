@@ -8,13 +8,13 @@
                         <span class="ios-only">Back</span>
                     </a>
                 </div>
-                <div class="title">Sign up Seller Account</div>
+                <div class="title">Edit Account</div>
             </div>
         </div>
         <div class="page-content">
-            <div class="block-title">Sign up Member Account</div>
+            <div class="block-title">Seller Account</div>
             <div class="block">
-                <form class="list">
+                <form class="list" id="my-form">
                     <ul>
                         <li class="item-content item-input">
                             <div class="item-inner">
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="item-content item-input">
+                        <!-- <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">Password</div>
                                 <div class="item-input-wrap">
@@ -71,7 +71,7 @@
                                     <input type="text" name="confirm-password" placeholder="Yak123">
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </form>
             </div>
@@ -79,7 +79,8 @@
                 <div class="row">
                     <div class="col"></div>
                     <div class="col">
-                        <a href="/seller-list/" class="button button-fill color-green" @click="showToastTop">Save</a>
+                        <!-- <a href="/seller-list/" class="button button-fill color-green">Save</a> -->
+                        <a href="" class="button button-fill color-green convert-form-to-data">Save</a>
 
                     </div>
                     <div class="col"></div>
@@ -90,35 +91,50 @@
     </div>
 </template>
 <script>
-        return {
-          methods: {
-            showToastTop: function () {
-              var self = this;
-              // Create toast
-              if (!self.toastTop) {
-                self.toastTop = self.$app.toast.create({
-                  text: 'Top positioned toast',
-                  position: 'top',
-                  closeTimeout: 2000,
-                });
-              }
-              // Open it
-              self.toastTop.open();
+    return {
+        on: {
+            pageInit: function (e, page) {
+                let notificationSuccess = app.notification.create({
+                    // icon: '<i class="icon demo-icon">7</i>',
+                    title: 'Notification',
+                    titleRightText: 'now',
+                    subtitle: 'Your profile was updated successfully!',
+                    text: 'Click me to close',
+                    closeOnClick: true,
+                })
+
+                let notificationFailed = app.notification.create({
+                    // icon: '<i class="icon demo-icon">7</i>',
+                    title: 'Notification',
+                    titleRightText: 'now',
+                    subtitle: 'Your profile was updated failed!',
+                    text: 'Click me to close',
+                    closeOnClick: true,
+                })
+
+                axios.get('api/v1/me/profile').then(res => {
+                    console.log('res', res.data.data);
+
+                    let formData = res.data.data;
+                    app.form.fillFromData('#my-form', formData);
+                }).catch(err => {
+                    console.log('err', err);
+                })
+
+                $$('.convert-form-to-data').on('click', function () {
+                    console.log('clicked');
+                    let formData = app.form.convertToData('#my-form');
+                    console.log('formdata', formData);
+
+                    axios.put('api/v1/me/profile', formData).then(res => {
+                        console.log('res', res);
+                        notificationSuccess.open();
+                    }).catch(err => {
+                        console.log('err', err);
+                        notificationFailed.open();
+                    })
+                })
             }
-          
-          },
-          on: {
-            pageBeforeOut: function () {
-              var self = this;
-              self.$app.toast.close();
-            },
-            pageBeforeRemove: function () {
-              var self = this;
-              // Destroy toasts when page removed
-           
-              if (self.toastTop) self.toastTop.destroy();
-            
-            }
-          }
         }
-      </script>
+    }
+</script>
