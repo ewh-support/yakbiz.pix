@@ -41,7 +41,7 @@
                             <i>Expire Date: 12/12/2019</i>
                         </p>
                         <div class="row">
-                            <button style="width: 48%" class="col button button-small button-fill color-black" id="edit_product_btn">EDIT</button>
+                            <a href="/seller-edit-product/{{id}}" class="col button button-small button-fill color-black">EDIT</a>
                             <button style="width: 48%" class="col button button-small button-fill color-black" id="remove_product_btn">REMOVE</button>
 
                         </div>
@@ -254,16 +254,3 @@
         margin: 10px;
     }
 </style>
-<script>
-    return {
-        on: {
-            pageInit: function (e, page) {
-                $$('#edit_product_btn').on('click', function(){
-                    console.log('object');
-                })
-
-                
-            }
-        }
-    }
-</script>

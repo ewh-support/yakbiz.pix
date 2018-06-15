@@ -76,6 +76,15 @@ app.on('pageInit', function (page) {
   }
 });
 
+//clear data
+$$('#clear-button').on('click', function (e) {
+  console.log('localStorage', localStorage);
+  localStorage.access_token = '';
+  localStorage.isAuthenticated = 'false';
+  localStorage.user = '';
+
+});
+
 $$('#seller-button').on('click', function (e) {
   console.log('Login screen open');
   if (localStorage.isAuthenticated === 'true')

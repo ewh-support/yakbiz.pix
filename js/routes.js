@@ -102,7 +102,7 @@ routes = [{
 
       axios.defaults.baseURL = pixUrl;
       axios.defaults.headers.common['Authorization'] = localStorage.access_token;
-      
+
       axios.get('api/v1/seller/products/' + id).then(res => {
         console.log('res', res);
         var data = res.data.data;
@@ -117,6 +117,45 @@ routes = [{
             data: data, //chỉ cần truyền thông tin ngoài form
           }
         });
+      }).catch(err => {
+        console.log('err', err.response);
+        notificationFailed.open();
+      })
+
+    }
+  },
+  {
+    path: '/seller-edit-product/:id',
+    componentUrl: './pages/seller/seller-edit-product.html',
+    async function (routeTo, routeFrom, resolve, reject) {
+      var id = routeTo.params.id;
+      console.log('news detail | id', id)
+
+      let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+      console.log('storage', localStorage);
+      console.log('storage access_token', localStorage.access_token);
+
+      //noti
+      var notificationFailed = app.notification.create({
+        // icon: '<i class="icon demo-icon">7</i>',
+        title: 'Notification',
+        titleRightText: 'now',
+        subtitle: 'Get product detail failed!',
+        text: 'Click me to close',
+        closeOnClick: true,
+        closeTimeout: 2000
+      })
+
+      axios.defaults.baseURL = pixUrl;
+      axios.defaults.headers.common['Authorization'] = localStorage.access_token;
+
+      axios.get('api/v1/seller/products/' + id).then(res => {
+        console.log('res', res);
+        var data = res.data.data;
+        console.log('res data', data); 
+        
+        resolve()
+        
       }).catch(err => {
         console.log('err', err.response);
         notificationFailed.open();
