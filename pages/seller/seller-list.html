@@ -19,8 +19,9 @@
                 </div>
             </div>
 
-            <div class="block-title">Computer</div>
+            <div class="block-title">Render to DOM</div>
             <div class="card demo-card-header-pic">
+                {{#each data}}
                 <div class="row no-gap">
                     <div class="col-30">
                         <a href="/seller-product-detail/">
@@ -30,11 +31,11 @@
                     </div>
                     <div class="col-50">
                         <p>
-                            <b>Hp super workstation core i7</b>
+                            <b>{{name}}</b>
                         </p>
                         <p style="color: green">Yak capital</p>
                         <p>Price:
-                            <span style="color: red">$10.000</span>
+                            <span style="color: red">{{price}}</span>
                         </p>
                         <p>
                             <i>Expire Date: 12/12/2019</i>
@@ -44,7 +45,8 @@
                         <a href="/seller-product-detail/" class="col button button-fill" style="background-color: red">Select</a>
                     </div>
                 </div>
-                <div class="row no-gap">
+                {{/each}}
+                <!-- <div class="row no-gap">
                     <div class="col-30">
                         <a href="/seller-product-detail/">
 
@@ -136,11 +138,11 @@
                     <div class="col-20" style="padding-top: 39px">
                         <a href="/seller-product-detail/" class="col button button-fill" style="background-color: red">Select</a>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="block-title">Phone</div>
-            <div class="card demo-card-header-pic">
+            <!-- <div class="card demo-card-header-pic">
                 <div class="row no-gap">
                     <div class="col-30">
                         <a href="/seller-product-detail/">
@@ -237,9 +239,7 @@
                         <a href="/seller-product-detail/" class="col button button-fill" style="background-color: red">Select</a>
                     </div>
                 </div>
-            </div>
-
-
+            </div> -->
 
         </div>
     </div>
@@ -249,30 +249,3 @@
         margin: 10px;
     }
 </style>
-<script>
-    return {
-        // Page Events
-        on: {
-
-            pageInit: function (e, page) {
-                console.log('pageInit', page);
-                let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
-                console.log('storage', localStorage);
-                console.log('storage access_token', localStorage.access_token);
-
-                axios.defaults.baseURL = pixUrl;
-                axios.defaults.headers.common['Authorization'] = localStorage.access_token;
-                axios.get('api/v1/seller/products').then(res => {
-                    console.log('res', res);
-                    let data = res.data.data;
-                    console.log('res data', data);
-                }).catch(err => {
-                    console.log('err', err);
-                })
-
-
-
-            }
-        }
-    }
-</script>

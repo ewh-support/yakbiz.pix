@@ -20,7 +20,32 @@ routes = [{
   //seller after sign in
   {
     path: '/seller-list/',
-    componentUrl: './pages/seller/seller-list.html'
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+      console.log('storage', localStorage);
+      console.log('storage access_token', localStorage.access_token);
+
+      axios.defaults.baseURL = pixUrl;
+      axios.defaults.headers.common['Authorization'] = localStorage.access_token;
+      axios.get('api/v1/seller/products').then(res => {
+        console.log('res', res);
+        var data = res.data.data;
+        console.log('res data', data);
+
+        resolve({
+          // templateUrl: './pages/seller/seller-list.html',
+          componentUrl: './pages/seller/seller-list.html'
+
+        }, {
+          context: {
+            data: data, //chỉ cần truyền thông tin ngoài form
+          }
+        });
+      }).catch(err => {
+        console.log('err', err);
+      })
+
+    }
   },
   //seller add items
   {
@@ -33,7 +58,7 @@ routes = [{
   },
   {
     path: '/seller-sign-up/',
-    componentUrl: './pages/seller/seller-sign-up.html' 
+    componentUrl: './pages/seller/seller-sign-up.html'
   },
   {
     path: '/seller-edit-account/',
