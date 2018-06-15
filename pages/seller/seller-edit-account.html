@@ -101,6 +101,7 @@
                     subtitle: 'Your profile was updated successfully!',
                     text: 'Click me to close',
                     closeOnClick: true,
+                    closeTimeout: 2000
                 })
 
                 let notificationFailed = app.notification.create({
@@ -110,6 +111,7 @@
                     subtitle: 'Your profile was updated failed!',
                     text: 'Click me to close',
                     closeOnClick: true,
+                    closeTimeout: 2000
                 })
 
                 axios.get('api/v1/me/profile').then(res => {

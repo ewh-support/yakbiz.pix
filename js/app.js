@@ -81,7 +81,7 @@ $$('#seller-button').on('click', function (e) {
   if (localStorage.isAuthenticated === 'true')
     app.views.main.router.navigate('/seller-list/');
   else {
-    app.loginScreen.open('#my-login-screen'); 
+    app.loginScreen.open('#my-login-screen');
 
   }
 
@@ -111,6 +111,16 @@ function login() {
   };
   console.log('credentials', credentials);
 
+  var notificationClickToClose = app.notification.create({
+    // icon: '<i class="icon demo-icon">7</i>',
+    title: 'Notification',
+    titleRightText: 'now',
+    subtitle: 'Login failed wrong username or password',
+    // text: 'Click me to close',
+    closeOnClick: true,
+    closeTimeout: 2000
+  })
+
   axios.post('api/v1/auth/login', credentials).then(function (response) {
     console.log('response', response);
     console.log('response.data', response.data);
@@ -129,8 +139,11 @@ function login() {
     }
   }).catch(function (error) {
     console.log('err', error);
+    notificationClickToClose.open();
   });
 }
+
+
 
 // function getUserInfo() {
 //   console.log('getUserInfo()')

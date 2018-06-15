@@ -40,14 +40,14 @@
                                 </div>
                             </div>
                         </li>
-                        <!-- <li class="item-content item-input">
+                        <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">Confirm password</div>
                                 <div class="item-input-wrap">
                                     <input type="text" name="confirm_password" placeholder="Yak123" required validate>
                                 </div>
                             </div>
-                        </li> -->
+                        </li>
                     </ul>
                 </form>
 
@@ -77,13 +77,34 @@
         on: {
             pageInit: function (e, page) {
                 // Create notification with click to close
-                var notificationClickToClose = app.notification.create({
+                var notificationSuccess = app.notification.create({
+                    // icon: '<i class="icon demo-icon">7</i>',
+                    title: 'Notification',
+                    titleRightText: 'now',
+                    subtitle: 'Sign up successfully!',
+                    text: 'Click me to close',
+                    closeOnClick: true,
+                    closeTimeout: 2000
+                })
+
+                var notificationFailed = app.notification.create({
                     // icon: '<i class="icon demo-icon">7</i>',
                     title: 'Notification',
                     titleRightText: 'now',
                     subtitle: 'Sign up failed!',
                     text: 'Click me to close',
                     closeOnClick: true,
+                    closeTimeout: 2000
+                })
+
+                var notificationMatch = app.notification.create({
+                    // icon: '<i class="icon demo-icon">7</i>',
+                    title: 'Notification',
+                    titleRightText: 'now',
+                    subtitle: 'Password and confirm password not match!',
+                    text: 'Click me to close',
+                    closeOnClick: true,
+                    closeTimeout: 2000
                 })
 
                 $$('.convert-form-to-data').on('click', function () {
@@ -98,22 +119,24 @@
                     formData.website = "pix.com.vn";
 
                     console.log(JSON.stringify(formData));
+                    if (formData.password !== formData.confirm_password) {
+                        console.log('not match');
+                        notificationMatch.open();
+                        return;
+                    }
 
-                    // if (formData.password === formData.confirm_password) {
-                    // let url = 'http://128.199.153.64:3500/api';
                     let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
                     axios.defaults.baseURL = pixUrl;
                     axios.post('api/v1/auth/register', formData).then(function (response) {
                             console.log('res', response);
+                            notificationSuccess.open();
                         })
                         .catch(function (error) {
                             console.log('err', error);
-                            
+                            notificationFailed.open();
+
                         })
-                    // } else {
-                    //     console.log('not match');
-                    //     notificationClickToClose.open();
-                    // }
+
 
                 });
 

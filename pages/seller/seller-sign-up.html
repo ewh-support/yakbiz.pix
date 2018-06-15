@@ -68,7 +68,7 @@
               <div class="item-inner">
                 <div class="item-title item-label">Confirm password</div>
                 <div class="item-input-wrap">
-                  <input type="text" name="confirm-password" placeholder="Yak123">
+                  <input type="text" name="confirm_password" placeholder="Yak123">
                 </div>
               </div>
             </li>
@@ -78,7 +78,7 @@
       <div class="block ">
         <div class="row">
           <div class="col-50 ">
-            <a href="/seller-list/" class="button button-fill color-green">Sign Up</a>
+            <a href="" class="button button-fill color-green" id="convert-form-to-data">Sign Up</a>
           </div>
           <div class="col-10"></div>
           <div class="col-40">
@@ -94,34 +94,62 @@
     on: {
       pageInit: function (e, page) {
         // Create notification with click to close
-        var notificationClickToClose = app.notification.create({
+        var notificationSuccess = app.notification.create({
+          // icon: '<i class="icon demo-icon">7</i>',
+          title: 'Notification',
+          titleRightText: 'now',
+          subtitle: 'Sign up successfully!',
+          text: 'Click me to close',
+          closeOnClick: true,
+          closeTimeout: 2000
+        })
+
+        var notificationFailed = app.notification.create({
           // icon: '<i class="icon demo-icon">7</i>',
           title: 'Notification',
           titleRightText: 'now',
           subtitle: 'Sign up failed!',
           text: 'Click me to close',
           closeOnClick: true,
+          closeTimeout: 2000
         })
 
-        $$('.convert-form-to-data').on('click', function () {
+        var notificationMatch = app.notification.create({
+          // icon: '<i class="icon demo-icon">7</i>',
+          title: 'Notification',
+          titleRightText: 'now',
+          subtitle: 'Password and confirm password not match!',
+          text: 'Click me to close',
+          closeOnClick: true,
+          closeTimeout: 2000
+        })
+
+        $$('#convert-form-to-data').on('click', function () {
           console.log('POST');
           var formData = app.form.convertToData('#form-sign-up-seller');
           formData.user_type = 2;
+          formData.type = "username";
+
           console.log(JSON.stringify(formData));
+
           if (formData.password === formData.confirm_password) {
             // axios.defaults.baseURL = 'http://128.199.153.64:3500/api';
             axios.defaults.baseURL =
               'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
-            axios.post('/api/v1/auth/register', formData)
-              .then(function (response) {
-                console.log('res', response);
-              })
-              .catch(function (error) {
-                console.log('err', error);
-              })
+            axios.post('/api/v1/auth/register', formData).then(function (response) {
+              console.log('res', response);
+              app.loginScreen.open('#my-login-screen');
+              notificationSuccess.open();
+
+            }).catch(function (error) {
+              console.log('err', error);
+              app.loginScreen.open('#my-login-screen');
+              notificationFailed.open();
+            })
           } else {
             console.log('not match');
-            notificationClickToClose.open();
+            app.loginScreen.open('#my-login-screen');
+            notificationMatch.open();
           }
 
         });

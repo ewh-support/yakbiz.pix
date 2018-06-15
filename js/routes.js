@@ -33,7 +33,7 @@ routes = [{
   },
   {
     path: '/seller-sign-up/',
-    url: './pages/seller/seller-sign-up.html'
+    componentUrl: './pages/seller/seller-sign-up.html' 
   },
   {
     path: '/seller-edit-account/',

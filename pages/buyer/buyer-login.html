@@ -63,6 +63,7 @@
                     subtitle: 'Login failed wrong username or password',
                     // text: 'Click me to close',
                     closeOnClick: true,
+                    closeTimeout: 2000
                 })
                 
                 $$('.convert-form-to-data').on('click', function () {
@@ -87,7 +88,7 @@
                             localStorage.access_token = response.data.data.access_token;
                             axios.defaults.headers.common['Authorization'] = localStorage.access_token;
 
-                            return app.views.main.router.navigate('/buyer-main/');
+                            return app.views.main.router.navigate('/buyer-main/'); 
                         }) 
                         .catch(function (error) {
                             console.log('err', error);
