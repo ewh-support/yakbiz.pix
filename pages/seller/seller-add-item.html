@@ -155,7 +155,7 @@
                     closeOnClick: true,
                     closeTimeout: 2000
                 })
-
+                
                 $$('.convert-form-to-data').on('click', function () {
                     var formData = app.form.convertToData('#form-request');
                     console.log('formData', formData);
@@ -166,7 +166,8 @@
                     axios.post('api/v1/seller/products', formData).then(function (response) {
                             console.log('res', response);
                             notificationSuccess.open();
-
+                            app.views.main.router.navigate('/seller-list/');
+                             
                         })
                         .catch(function (error) {
                             console.log('err', error);
