@@ -25,6 +25,17 @@ routes = [{
       console.log('storage', localStorage);
       console.log('storage access_token', localStorage.access_token);
 
+      //noti
+      var notificationFailed = app.notification.create({
+        // icon: '<i class="icon demo-icon">7</i>',
+        title: 'Notification',
+        titleRightText: 'now',
+        subtitle: 'Access token has expired || invalid!',
+        text: 'Click me to close',
+        closeOnClick: true,
+        closeTimeout: 2000
+      })
+
       axios.defaults.baseURL = pixUrl;
       axios.defaults.headers.common['Authorization'] = localStorage.access_token;
       axios.get('api/v1/seller/products').then(res => {
@@ -42,7 +53,8 @@ routes = [{
           }
         });
       }).catch(err => {
-        console.log('err', err);
+        console.log('err', err.response);
+        notificationFailed.open();
       })
 
     }
