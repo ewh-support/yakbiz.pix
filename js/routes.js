@@ -155,6 +155,7 @@ routes = [{
         console.log('res', res);
         var data = res.data.data;
         console.log('res data', data);
+        app.form.fillFromData('#my-form-edit-product', data)
 
         resolve({
           //templateUrl: './pages/seller/seller-edit-product.html'
