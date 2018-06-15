@@ -127,7 +127,9 @@ routes = [{
   {
     path: '/seller-edit-product/:id',
     componentUrl: './pages/seller/seller-edit-product.html',
-    async function (routeTo, routeFrom, resolve, reject) {
+    // path: '/pages/news-detail/:id/',
+    // templateUrl: './pages/news-detail.html',
+    async: function (routeTo, routeFrom, resolve, reject) {
       var id = routeTo.params.id;
       console.log('news detail | id', id)
 
@@ -152,10 +154,17 @@ routes = [{
       axios.get('api/v1/seller/products/' + id).then(res => {
         console.log('res', res);
         var data = res.data.data;
-        console.log('res data', data); 
-        
-        resolve()
-        
+        console.log('res data', data);
+
+        resolve({
+          //templateUrl: './pages/seller/seller-edit-product.html'
+          componentUrl: './pages/seller/seller-edit-product.html'
+
+        }, {
+          context: {
+            data: data, //chỉ cần truyền thông tin ngoài form
+          }
+        });
       }).catch(err => {
         console.log('err', err.response);
         notificationFailed.open();
@@ -163,6 +172,7 @@ routes = [{
 
     }
   },
+
   //buyer
   {
     path: '/buyer-main/',
@@ -448,7 +458,7 @@ routes = [{
   //         var formId = 'my-profile';
   //         app.form.storeFormData(formId, data) //
   //         // Resolve route to load page
-  //         resolve({
+  //         resolve({ 
   //           componentUrl: './pages/profiles.html',
   //         }, {
   //             context: {
