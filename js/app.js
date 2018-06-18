@@ -74,14 +74,17 @@ app.on('pageInit', function (page) {
     //chưa đăng nhập: có thể hiện ra login
     //app.loginScreen.open('#my-login-screen');
   }
+
 });
 
 //clear data
 $$('#clear-button').on('click', function (e) {
   console.log('localStorage', localStorage);
-  localStorage.access_token = '';
   localStorage.isAuthenticated = 'false';
-  localStorage.user = '';
+  localStorage.removeItem("user");
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("f7form-my-form-edit-product");
+  localStorage.removeItem("f7form-form-request");
 
 });
 
@@ -90,7 +93,7 @@ $$('#seller-button').on('click', function (e) {
   if (localStorage.isAuthenticated === 'true')
     app.views.main.router.navigate('/seller-list/');
   else {
-    app.loginScreen.open('#my-login-screen'); 
+    app.loginScreen.open('#my-login-screen');
 
   }
 
@@ -152,7 +155,15 @@ function login() {
   });
 }
 
+//buyer
+$$('#buyer_button').on('click', function () {
+  console.log('clicked');
+  if (localStorage.isAuthenticated === 'false')
+    app.views.main.router.navigate('/buyer-login/');
+  else
+    app.views.main.router.navigate('/buyer-main/');
 
+})
 
 // function getUserInfo() {
 //   console.log('getUserInfo()')

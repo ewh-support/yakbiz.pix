@@ -62,7 +62,28 @@ routes = [{
   //seller add items
   {
     path: '/seller-add-item/',
-    componentUrl: './pages/seller/seller-add-item.html'
+    async: function (routeTo, routeFrom, resolve, reject) {
+      //get category
+      axios.get('api/v1/common/categories').then(res => {
+        let data_category = res.data.data;
+        console.log('GET data_category', data_category);
+
+        resolve({
+          componentUrl: './pages/seller/seller-add-item.html'
+        }, {
+          context: {
+            data_category: data_category, //chỉ cần truyền thông tin ngoài form
+          }
+        });
+      }).catch(err => {
+        console.log('err', err.response);
+      })
+
+      //get sub category
+
+
+
+    }
   },
   {
     path: '/seller-upload-image/',
@@ -131,11 +152,11 @@ routes = [{
     // templateUrl: './pages/news-detail.html',
     async: function (routeTo, routeFrom, resolve, reject) {
       var id = routeTo.params.id;
-      console.log('news detail | id', id)
+      console.log('id', id)
 
       let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
-      console.log('storage', localStorage);
-      console.log('storage access_token', localStorage.access_token);
+      // console.log('storage', localStorage);
+      // console.log('storage access_token', localStorage.access_token);
 
       //noti
       var notificationFailed = app.notification.create({
@@ -151,10 +172,11 @@ routes = [{
       axios.defaults.baseURL = pixUrl;
       axios.defaults.headers.common['Authorization'] = localStorage.access_token;
 
+      //get product
       axios.get('api/v1/seller/products/' + id).then(res => {
-        console.log('res', res);
+        // console.log('GET res', res);
         var data = res.data.data;
-        console.log('res data', data);
+        // console.log('res data', data);
         app.form.fillFromData('#my-form-edit-product', data)
 
         resolve({
@@ -172,20 +194,65 @@ routes = [{
       })
 
     }
+
   },
 
   //buyer
   {
     path: '/buyer-main/',
-    componentUrl: './pages/buyer/buyer-main.html'
+    // componentUrl: './pages/buyer/buyer-main.html',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+      axios.defaults.baseURL = pixUrl;
+
+      //get category in market
+      axios.get('api/v1/market/categories').then(res => {
+        var data = res.data.data;
+        console.log('data GET', data);
+        resolve({
+          componentUrl: './pages/buyer/buyer-main.html'
+
+        }, {
+          context: {
+            data: data, //chỉ cần truyền thông tin ngoài form
+          }
+        });
+      }).catch(err => {
+        console.log('err', err.response);
+        notificationFailed.open();
+      })
+
+    }
   },
   {
     path: '/buyer-company-list/',
     componentUrl: './pages/buyer/buyer-company-list.html'
   },
   {
-    path: '/buyer-select/',
-    componentUrl: './pages/buyer/buyer-select.html'
+    path: '/buyer-select/:id',
+    componentUrl: './pages/buyer/buyer-select.html',
+    // templateUrl: './pages/buyer/buyer-select.html',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      var id = routeTo.params.id;
+      console.log('buyer-select | id', id);
+      
+      axios.get('api/v1/market/categories/' + id + '/products').then(res => {
+        var data = res.data.data;
+        console.log('buyer-select | GETbyId', data);
+        resolve({
+          componentUrl: './pages/buyer/buyer-detail.html'
+
+        }, {
+          context: {
+            data: data, //chỉ cần truyền thông tin ngoài form
+          }
+        });
+      }).catch(err => {
+        console.log('err', err.response);
+
+      })
+    }
+
   },
   {
     path: '/buyer-pay-by/',
@@ -513,7 +580,7 @@ routes = [{
     }
   },
   // {
-  //   /* news detail */
+  //   /* news detail */ 
   //   path: '/pages/news-detail/:id/',
   //   templateUrl: './pages/news-detail.html',
   //   async: function (routeTo, routeFrom, resolve, reject) {

@@ -15,15 +15,17 @@
             <div class="list inline-labels no-hairlines-md">
                 <form class="list form-store-data" id="form-request">
                     <ul>
+                        
                         <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">Category</div>
-                                <div class="item-input-wrap input-dropdown-wrap">
-                                    <select name="category_id" placeholder="Please choose...">
-                                        <option value="1">Option1</option>
-                                        <option value="2">Option2</option>
-                                        <option value="3">Option3</option>
+                                <div class="item-input-wrap input-dropdown-wrap" id="">
+                                    <select name="category_id" placeholder="Please choose..." id="category_dropdown">
+                                        {{#each data_category}}
+                                        <option value="{{id}}">{{name}}</option>
+                                        {{/each}}
                                     </select>
+
                                 </div>
                             </div>
                         </li>
@@ -51,7 +53,7 @@
                         </li>
                         <li class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label">Model</div>
+                                <div class="item-title item-label"></div>
                                 <div class="item-input-wrap">
                                     <input type="text" name="model" placeholder="Model">
                                     <span class="input-clear-button"></span>
@@ -131,7 +133,7 @@
 <script>
     return {
         method: {
-          
+
         },
         on: {
             pageInit: function (e, page) {
@@ -155,7 +157,7 @@
                     closeOnClick: true,
                     closeTimeout: 2000
                 })
-                
+
                 $$('.convert-form-to-data').on('click', function () {
                     var formData = app.form.convertToData('#form-request');
                     console.log('formData', formData);
@@ -164,19 +166,17 @@
                     let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
                     axios.defaults.baseURL = pixUrl;
                     axios.post('api/v1/seller/products', formData).then(function (response) {
-                            console.log('res', response);
-                            notificationSuccess.open();
-                            app.views.main.router.navigate('/seller-list/');
-                             
-                        })
-                        .catch(function (error) {
-                            console.log('err', error);
-                            notificationFailed.open();
+                        console.log('res', response);
+                        notificationSuccess.open();
+                        app.views.main.router.navigate('/seller-list/');
+                    }).catch(function (error) {
+                        console.log('err', error);
+                        notificationFailed.open();
 
-                        })
+                    })
 
                 });
-
+             
 
             },
         }

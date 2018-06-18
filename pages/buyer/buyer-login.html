@@ -83,7 +83,7 @@
                             console.log('res.data', response.data);
 
                             localStorage.isAuthenticated = 'true';
-                            localStorage.username = response.data.data.user_data.username;
+                            localStorage.user = response.data.data.user_data.username;
                             localStorage.user_type = response.data.data.user_data.user_type;
                             localStorage.access_token = response.data.data.access_token;
                             axios.defaults.headers.common['Authorization'] = localStorage.access_token;

@@ -12,9 +12,18 @@
             </div>
         </div>
         <div class="page-content">
-
+                        <div class="row no-gap">
+                            {{#each data}}
+                            <div class="col">
+                                <div class="card demo-card-header-pic">
+                                    <a href="/buyer-select/{{id}}">{{name}}</a>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div> 
+                       
             <!-- Card -->
-            <div class="block-title">Computer</div>
+            <!-- <div class="block-title">Computer</div>
             <div class="card demo-card-header-pic">
                 <div class="row no-gap">
                     <div class="col-30">
@@ -132,10 +141,11 @@
                         <a href="/buyer-items-select/" class="col button button-fill" style="background-color: red">Select</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="block-title">Phone</div>
+            <div class="block-title"></div>
             <div class="card demo-card-header-pic">
+                
                 <div class="row no-gap">
                     <div class="col-30">
                         <a href="/buyer-product-description/">
@@ -145,7 +155,7 @@
                     </div>
                     <div class="col-50">
                         <p>
-                            <b>Samsung Galaxy Note 8 </b>
+                            <b> </b>
                         </p>
                         <p style="color: green">Yak capital</p>
                         <p>Price:
@@ -159,75 +169,7 @@
                         <a href="/buyer-items-select/" class="col button button-fill" style="background-color: red">Select</a>
                     </div>
                 </div>
-                <div class="row no-gap">
-                    <div class="col-30">
-                        <a href="/buyer-product-description/">
-                            <div style="background-image:url(https://cdn.mos.cms.futurecdn.net/z9thQEcxjHPCPiYD86zj75-1366-80.jpg); height: 20vw;"
-                                valign="bottom" class="card-header"></div>
-                        </a>
-                    </div>
-                    <div class="col-50">
-                        <p>
-                            <b>Samsung Galaxy Note 8 </b>
-                        </p>
-                        <p style="color: green">Yak capital</p>
-                        <p>Price:
-                            <span style="color: red">$1.000</span>
-                        </p>
-                        <p>
-                            <i>Expire Date: 2/8/2019</i>
-                        </p>
-                    </div>
-                    <div class="col-20" style="padding-top: 39px">
-                        <a href="/buyer-items-select/" class="col button button-fill" style="background-color: red">Select</a>
-                    </div>
-                </div>
-                <div class="row no-gap">
-                    <div class="col-30">
-                        <a href="/buyer-product-description/">
-                            <div style="background-image:url(https://cdn.mos.cms.futurecdn.net/cfwuPH6rp92yj97DULW9ME-1366-80.jpg); height: 20vw;"
-                                valign="bottom" class="card-header"></div>
-                        </a>
-                    </div>
-                    <div class="col-50">
-                        <p>
-                            <b>Samsung Galaxy Note 8 </b>
-                        </p>
-                        <p style="color: green">Yak capital</p>
-                        <p>Price:
-                            <span style="color: red">$1.000</span>
-                        </p>
-                        <p>
-                            <i>Expire Date: 2/8/2019</i>
-                        </p>
-                    </div>
-                    <div class="col-20" style="padding-top: 39px">
-                        <a href="/buyer-items-select/" class="col button button-fill" style="background-color: red">Select</a>
-                    </div>
-                </div>
-                <div class="row no-gap">
-                    <div class="col-30">
-                        <a href="/buyer-product-description/">
-                            <div style="background-image:url(https://cdn.mos.cms.futurecdn.net/sJzrepecoDeA8PaszuUdXe-1366-80.jpg); height: 20vw;"
-                                valign="bottom" class="card-header"></div>
-                        </a>
-                    </div>
-                    <div class="col-50">
-                        <p>
-                            <b>Samsung Galaxy Note 8 </b>
-                        </p>
-                        <p style="color: green">Yak capital</p>
-                        <p>Price:
-                            <span style="color: red">$1.000</span>
-                        </p>
-                        <p>
-                            <i>Expire Date: 2/8/2019</i>
-                        </p>
-                    </div>
-                    <div class="col-20" style="padding-top: 39px">
-                        <a href="/buyer-items-select/" class="col button button-fill" style="background-color: red">Select</a>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -237,66 +179,3 @@
         margin: 10px;
     }
 </style>
-<script>
-    return {
-        // Lifecycle Hooks
-        beforeCreate() {
-            //console.log('componentBeforeCreate', this)
-        },
-        created() {
-            //console.log('componentCreated', this)
-        },
-        beforeMount() {
-            //console.log('componentBeforeMount', this)
-        },
-        mounted() {
-            //console.log('componentMounted', this);
-        },
-        beforeDestroy() {
-            //console.log('componentBeforeDestroy', this);
-        },
-        destroyed() {
-            //console.log('componentDestroyed', this);
-        },
-        // Component Data
-        data: function () {
-            // Must return an object
-            return {
-                name: 'Jimmy',
-                age: 25,
-                like: ['Tennis', 'Chess', 'Football'],
-            }
-        },
-        // Component Methods
-        methods: {
-            openAlert: function () {
-                var self = this;
-                self.$app.dialog.alert('Hello World');
-            },
-        },
-        // Page Events
-        on: {
-            pageMounted: function (e, page) {
-                //console.log('pageMounted', page);
-            },
-            pageInit: function (e, page) {
-                // console.log('pageInit', page);
-            },
-            pageBeforeIn: function (e, page) {
-                //console.log('pageBeforeIn', page);
-            },
-            pageAfterIn: function (e, page) {
-                //console.log('pageAfterIn', page);
-            },
-            pageBeforeOut: function (e, page) {
-                //console.log('pageBeforeOut', page);
-            },
-            pageAfterOut: function (e, page) {
-                //console.log('pageAfterOut', page);
-            },
-            pageBeforeRemove: function (e, page) {
-                //console.log('pageBeforeRemove', page);
-            },
-        }
-    }
-</script>
