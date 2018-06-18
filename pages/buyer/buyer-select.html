@@ -12,16 +12,6 @@
             </div>
         </div>
         <div class="page-content">
-                        <div class="row no-gap">
-                            {{#each data}}
-                            <div class="col">
-                                <div class="card demo-card-header-pic">
-                                    <a href="/buyer-select/{{id}}">{{name}}</a>
-                                </div>
-                            </div>
-                            {{/each}}
-                        </div> 
-                       
             <!-- Card -->
             <!-- <div class="block-title">Computer</div>
             <div class="card demo-card-header-pic">
@@ -145,21 +135,21 @@
 
             <div class="block-title"></div>
             <div class="card demo-card-header-pic">
-                
+                {{#each data}}
                 <div class="row no-gap">
                     <div class="col-30">
                         <a href="/buyer-product-description/">
-                            <div style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyd-Bz31AjPidceWsmkA6TxTGWy1MvTlZODdcvHMVa6uTbRhQz); height: 20vw;"
+                            <div style="background-image:url(); height: 20vw;"
                                 valign="bottom" class="card-header"></div>
                         </a>
                     </div>
                     <div class="col-50">
                         <p>
-                            <b> </b>
+                            <b>{{name}}</b>
                         </p>
                         <p style="color: green">Yak capital</p>
                         <p>Price:
-                            <span style="color: red">$1.000</span>
+                            <span style="color: red">{{price}}</span>
                         </p>
                         <p>
                             <i>Expire Date: 2/8/2019</i>
@@ -169,7 +159,7 @@
                         <a href="/buyer-items-select/" class="col button button-fill" style="background-color: red">Select</a>
                     </div>
                 </div>
-                
+                {{/each}}
             </div>
         </div>
     </div>
