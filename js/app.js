@@ -59,7 +59,10 @@ app.on('pageInit', function (page) {
 //home button
 $$('#home_button').on('click', function (e) {
   app.views.main.router.navigate('/');
+})
 
+$$('#reload-button').on('click', function (e) {
+  location.reload()
 })
 
 
@@ -120,6 +123,16 @@ function login() {
     closeTimeout: 2000
   })
 
+  var successNotification = app.notification.create({
+    // icon: '<i class="icon demo-icon">7</i>',
+    title: 'Notification',
+    titleRightText: 'now',
+    subtitle: 'Login successfully!',
+    // text: 'Click me to close',
+    closeOnClick: true,
+    closeTimeout: 2000
+  })
+
   axios.post('api/v1/auth/login', credentials).then(function (response) {
     console.log('response', response);
     console.log('response.data', response.data);
@@ -131,13 +144,14 @@ function login() {
       localStorage.user_type = "2"; //buyer =1 , seller = 2
       //localStorage.ttl = data.ttl; //ttl: time to lease, thời gian mà accesstoken hết hạn
       //axios.defaults.headers.common['Authorization'] = localStorage.access_token;
-      
+
       var token = data.access_token;
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       //getUserInfo();
       console.log('local storage', localStorage);
       // Close login screen
       app.loginScreen.close('#my-login-screen');
+      successNotification.open();
     }
   }).catch(function (error) {
     console.log('err', error);

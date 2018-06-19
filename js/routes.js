@@ -34,9 +34,14 @@ routes = [{
         closeTimeout: 2000
       })
 
+      if (localStorage.access_token == undefined || localStorage.access_token == null)
+        return;
+
       // axios.defaults.baseURL = pixUrl;
       axios.defaults.headers.common['Authorization'] = localStorage.access_token;
       console.log('storage', localStorage);
+
+
       axios.get('api/v1/seller/products').then(res => {
         console.log('res', res);
         var data = res.data.data;
@@ -61,6 +66,34 @@ routes = [{
   //seller add items
   {
     path: '/seller-add-item/',
+    on: {
+      pageInit: function (e, page) {
+        console.log('seller init');
+        
+        // //on change
+        // $$('#category-button').change(function () {
+        //   let category_id = $$('#category-button').val();
+        //   //get sub category
+        //   console.log('category_id', category_id);
+
+        //   // axios.get('api/v1/common/categories/' + category_id).then(res => {
+        //   //   let data = res.data.data;
+        //   //   console.log('GET data_sub_category', data);
+
+        //   // }).catch(err => {
+        //   //   console.log('err', err.response);
+        //   // })
+
+        //   $$(document).on('page:init', function (e, page) {
+        //     console.log('page', page);
+        //   })
+
+        // })
+
+
+      }
+
+    },
     async: function (routeTo, routeFrom, resolve, reject) {
       //get category
       axios.get('api/v1/common/categories').then(res => {
@@ -71,21 +104,6 @@ routes = [{
         }, {
           context: {
             data_category: data, //chỉ cần truyền thông tin ngoài form
-          }
-        });
-      }).catch(err => {
-        console.log('err', err.response);
-      })
-
-      //get sub category
-      axios.get('api/v1/common/categories/2').then(res => {
-        let data = res.data.data;
-        console.log('GET data_category', data);
-        resolve({
-          componentUrl: './pages/seller/seller-add-item.html'
-        }, {
-          context: {
-            data_sub_category: data, //chỉ cần truyền thông tin ngoài form
           }
         });
       }).catch(err => {

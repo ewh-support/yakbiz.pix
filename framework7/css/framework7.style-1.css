@@ -1,0 +1,16 @@
+.mg-l-10{
+    margin-left: 10px;
+}
+
+@media all and (max-width: 425px){
+    .w-100-384{
+        width: 100%;
+    }
+}
+.style-font-14{
+    font-size: 14px !important;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 1;
+}
