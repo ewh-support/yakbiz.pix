@@ -1,126 +1,145 @@
-<div class="page">
-    <div class="navbar">
-        <div class="navbar-inner sliding">
-            <div class="left">
-                <a href="#" class="link back">
-                    <i class="icon icon-back"></i>
-                    <span class="ios-only">Back</span>
-                </a>
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">Add Items</div>
             </div>
-            <div class="title">Add Items</div>
         </div>
-    </div>
-    <div class="page-content">
-        <div class="list inline-labels no-hairlines-md">
-            <ul>
-                <li class="item-content item-input">
-                    <div class="item-inner">
-                        <div class="item-title item-label">Category</div>
-                        <div class="item-input-wrap input-dropdown-wrap">
-                            <select placeholder="Please choose...">
-                                <option value="">Option1</option>
-                                <option value="">Option2</option>
-                                <option value="">Option3</option>
-                            </select>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-content item-input">
-                    <div class="item-inner">
-                        <div class="item-title item-label">Sub Category</div>
-                        <div class="item-input-wrap input-dropdown-wrap">
-                            <select placeholder="Please choose...">
-                                <option value="">Option1</option>
-                                <option value="">Option2</option>
-                                <option value="">Option3</option>
-                                <option value="">Option4</option>
-                            </select>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-content item-input">
-                    <div class="item-inner">
-                        <div class="item-title item-label">Name</div>
-                        <div class="item-input-wrap">
-                            <input type="text" placeholder="Name">
-                            <span class="input-clear-button"></span>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-content item-input">
-                    <div class="item-inner">
-                        <div class="item-title item-label">Model</div>
-                        <div class="item-input-wrap">
-                            <input type="text" placeholder="Model">
-                            <span class="input-clear-button"></span>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-content item-input">
-                    <div class="item-inner">
-                        <div class="item-title item-label">Measure</div>
-                        <div class="item-input-wrap">
-                            <input type="text" placeholder="Measure">
-                            <span class="input-clear-button"></span>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-content item-input">
-                    <div class="item-inner">
-                        <div class="item-title item-label">Code</div>
-                        <div class="item-input-wrap">
-                            <input type="text" placeholder="Code">
-                            <span class="input-clear-button"></span>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-content item-input">
-                    <div class="item-inner">
-                        <div class="item-title item-label">Price</div>
-                        <div class="item-input-wrap">
-                            <input type="text" placeholder="Price">
-                            <span class="input-clear-button"></span>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-content item-input">
-                    <div class="item-inner">
-                        <div class="item-title item-label">VAT (Taxable)</div>
-                        <div class="item-input-wrap">
-                                <p>
+        <div class="page-content">
+            <div class="list inline-labels no-hairlines-md">
+                <form class="list form-store-data" id="form-request">
+                    <ul>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Category</div>
+                                <div class="item-input-wrap input-dropdown-wrap">
+                                    <select placeholder="Please choose...">
+                                        <option value="">Option1</option>
+                                        <option value="">Option2</option>
+                                        <option value="">Option3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Sub Category</div>
+                                <div class="item-input-wrap input-dropdown-wrap">
+                                    <select placeholder="Please choose...">
+                                        <option value="">Option1</option>
+                                        <option value="">Option2</option>
+                                        <option value="">Option3</option>
+                                        <option value="">Option4</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Name</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="Name">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Model</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="Model">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Measure</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="Measure">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Code</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="Code">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Price</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="Price">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">VAT (Taxable)</div>
+                                <div class="item-input-wrap">
+                                    <p>
                                         <label class="radio">
-                                          <input type="radio" name="demo-radio-inline">
-                                          <i class="icon-radio"></i>
-                                        </label> Yes                        
+                                            <input type="radio" name="demo-radio-inline">
+                                            <i class="icon-radio"></i>
+                                        </label> Yes
                                         <label class="radio">
-                                          <input type="radio" name="demo-radio-inline">
-                                          <i class="icon-radio"></i>
+                                            <input type="radio" name="demo-radio-inline">
+                                            <i class="icon-radio"></i>
                                         </label> No</p>
-                        </div>
-                    </div>
-                </li>
+                                </div>
+                            </div>
+                        </li>
 
-                <li class="item-content item-input">
-                    <div class="item-inner">
-                        <div class="item-title item-label">Description</div>
-                        <div class="item-input-wrap">
-                            <textarea placeholder="Description"></textarea>
-                        </div>
-                    </div>
-                </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Description</div>
+                                <div class="item-input-wrap">
+                                    <textarea placeholder="Description"></textarea>
+                                </div>
+                            </div>
+                        </li>
 
-            </ul>
-        </div>
+                    </ul>
+                </form>
+            </div>
 
-        <div class="block">
+            <div class="block">
                 <div class="row">
                     <div class="col"></div>
                     <div class="col">
-                            <a href="/seller-upload-image/" class="col button button-fill">Next</a>
+                        <a class="col button button-fill convert-form-to-data">Next</a>
                     </div>
                     <div class="col"></div>
                 </div>
             </div>
-            
+
+        </div>
     </div>
-</div>
+</template>
+<script>
+    return {
+        method: {
+
+        },
+        on: {
+            pageInit: function (e, page) {
+
+                $$('.convert-form-to-data').on('click', function () {
+                        console.log('POST');
+                    }
+                }
+            }
+        }
+</script>
