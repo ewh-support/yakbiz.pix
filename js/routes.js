@@ -64,14 +64,13 @@ routes = [{
     async: function (routeTo, routeFrom, resolve, reject) {
       //get category
       axios.get('api/v1/common/categories').then(res => {
-        let data_category = res.data.data;
-        console.log('GET data_category', data_category);
-
+        let data = res.data.data;
+        console.log('GET data_category', data);
         resolve({
           componentUrl: './pages/seller/seller-add-item.html'
         }, {
           context: {
-            data_category: data_category, //chỉ cần truyền thông tin ngoài form
+            data_category: data, //chỉ cần truyền thông tin ngoài form
           }
         });
       }).catch(err => {
@@ -79,8 +78,19 @@ routes = [{
       })
 
       //get sub category
-
-
+      axios.get('api/v1/common/categories/2').then(res => {
+        let data = res.data.data;
+        console.log('GET data_category', data);
+        resolve({
+          componentUrl: './pages/seller/seller-add-item.html'
+        }, {
+          context: {
+            data_sub_category: data, //chỉ cần truyền thông tin ngoài form
+          }
+        });
+      }).catch(err => {
+        console.log('err', err.response);
+      })
 
     }
   },

@@ -15,12 +15,12 @@
             <div class="list inline-labels no-hairlines-md">
                 <form class="list form-store-data" id="form-request">
                     <ul>
-                        
+
                         <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">Category</div>
                                 <div class="item-input-wrap input-dropdown-wrap" id="">
-                                    <select name="category_id" placeholder="Please choose..." id="category_dropdown">
+                                    <select name="category_id" placeholder="Please choose...">
                                         {{#each data_category}}
                                         <option value="{{id}}">{{name}}</option>
                                         {{/each}}
@@ -34,10 +34,9 @@
                                 <div class="item-title item-label">Sub Category</div>
                                 <div class="item-input-wrap input-dropdown-wrap">
                                     <select name="sub_category_id" placeholder="Please choose...">
-                                        <option value="1">Option1</option>
-                                        <option value="2">Option2</option>
-                                        <option value="3">Option3</option>
-                                        <option value="4">Option4</option>
+                                        {{#each data_sub_category}}
+                                        <option value="{{id}}">{{name}}</option>
+                                        {{/each}}
                                     </select>
                                 </div>
                             </div>
@@ -176,7 +175,7 @@
                     })
 
                 });
-             
+
 
             },
         }
