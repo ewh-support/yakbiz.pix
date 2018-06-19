@@ -65,22 +65,35 @@ $$('#reload-button').on('click', function (e) {
   location.reload()
 })
 
-
-//clear data
-$$('#clear-button').on('click', function (e) {
-  console.log('localStorage', localStorage);
+function clearData() {
   localStorage.isAuthenticated = 'false';
   localStorage.removeItem("user");
   localStorage.removeItem("access_token");
   localStorage.removeItem("f7form-form-request");
   localStorage.removeItem("user_type");
   localStorage.removeItem("f7form-my-form-edit-product");
+}
+
+//clear data
+$$('#clear-button').on('click', function (e) {
+  console.log('localStorage', localStorage);
+  clearData();
+  // localStorage.isAuthenticated = 'false';
+  // localStorage.removeItem("user");
+  // localStorage.removeItem("access_token");
+  // localStorage.removeItem("f7form-form-request");
+  // localStorage.removeItem("user_type");
+  // localStorage.removeItem("f7form-my-form-edit-product");
 
 });
 
+//seller login button
 $$('#seller-button').on('click', function (e) {
   console.log('Login screen open');
-  if (localStorage.isAuthenticated === 'true')
+  if (localStorage.user_type == '1') {
+    clearData();
+    app.loginScreen.open('#my-login-screen');
+  } else if (localStorage.isAuthenticated === 'true')
     app.views.main.router.navigate('/seller-list/');
   else {
     app.loginScreen.open('#my-login-screen');
@@ -161,8 +174,11 @@ function login() {
 
 //buyer
 $$('#buyer_button').on('click', function () {
-  console.log('clicked');
-  if (localStorage.isAuthenticated === 'false')
+  console.log('BUYER | localStorage', localStorage);
+  if (localStorage.user_type == '2') {
+    clearData();
+    app.views.main.router.navigate('/buyer-login/');
+  } else if (localStorage.isAuthenticated === 'false')
     app.views.main.router.navigate('/buyer-login/');
   else
     app.views.main.router.navigate('/buyer-main/');
