@@ -74,6 +74,7 @@ app.on('pageInit', function (page) {
     //chưa đăng nhập: có thể hiện ra login
     //app.loginScreen.open('#my-login-screen');
   }
+
 });
 
 $$('#seller-button').on('click', function (e) {
