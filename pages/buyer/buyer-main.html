@@ -1,118 +1,42 @@
 <template>
     <div class="page">
-        <div class="navbar bg-fff">
-            <div class="navbar-inner sliding row">
-                <div class="col-45">
-                    <div class="row">
-                        <div class="col-20">
-                            <div class="left">
-                                <a href="#" class="link back">
-                                    <img src="/img/icon-back.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-80">
-                            <div class="title color-222">Back</div>
-                        </div>
-                    </div>             
-                </div>   
-                <div class="col-55 fix-center-img">
-                    <img src="/img/icon-user.png" alt="">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="back">
+                    <a href="/" class="link">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
                 </div>
+                <div class="title">Main Screen</div>
+                <div class="subnavbar">
+                    <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-init">
+                        <div class="searchbar-inner">
+                            <div class="searchbar-input-wrap">
+                                <a href="/buyer-company-list/">
+                                    <input type="search" placeholder="Click to get company list" />
+                                </a>
+                                <i class="searchbar-icon"></i>
+                                <span class="input-clear-button"></span>
+                            </div>
+                            <span class="searchbar-disable-button">Cancel</span>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
         <div class="page-content">
-            <div class="text-center w-100 pd-t-35">
-                <img src="/img/logo-after-loading.png" alt="">
-            </div>
-        <div class="subnavbar">
-            <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-init">
-                <div class="searchbar-inner">
-                    <div class="searchbar-input-wrap">
-                        <a href="/buyer-company-list/">
-                            <input class="style-search style-font-14" type="search" placeholder="Click to search company list" />
-                        </a>
-                        <i class="searchbar-icon"></i>
-                        <span class="input-clear-button"></span>
-                    </div>
-                    <span class="searchbar-disable-button">Cancel</span>
-                </div>
-            </form>
-        </div>
-            <div class="row no-gap mg-tb-30">
-                <div class="col-4-auto col-3-auto">
+            <div class="row no-gap">
+                {{#each data}}
+                <div class="col">
                     <div class="card demo-card-header-pic">
-                        <a href="/buyer-select/" valign="middle" class="card-header w-100">
-                            <img class="w-100-384" src="/img/icon-1.png" alt="">
-                        </a>
-                        <span class="tabbar-label col-fff text-center">Fashion</span>
+                        <a href="/buyer-select/{{id}}">{{name}}</a>
                     </div>
                 </div>
-                <div class="col-4-auto col-3-auto">
-                    <div class="card demo-card-header-pic">
-                        <a href="/buyer-select/" valign="middle" class="card-header w-100">
-                            <img class="w-100-384" src="/img/icon-2.png" alt="">
-                        </a>
-                        <span class="tabbar-label col-fff text-center">Phone</span>
-                    </div>
-                </div>
-                <div class="col-4-auto col-3-auto">
-                    <div class="card demo-card-header-pic">
-                        <a href="/buyer-select/" valign="middle" class="card-header w-100">
-                            <img class="w-100-384" src="/img/icon-3.png" alt="">
-                        </a>
-                        <span class="tabbar-label col-fff text-center">Computer</span>
-                    </div>
-                </div>
-                <div class="col-4-auto col-3-auto">
-                    <div class="card demo-card-header-pic">
-                        <a href="/buyer-select/" valign="middle" class="card-header w-100">
-                            <img class="w-100-384" src="/img/icon-4.png" alt="">
-                        </a>
-                        <span class="tabbar-label col-fff text-center">Car</span>
-                    </div>
-                </div>
-                <div class="col-4-auto col-3-auto">
-                    <div class="card demo-card-header-pic">
-                        <a href="/buyer-select/" valign="middle" class="card-header w-100">
-                            <img class="w-100-384" src="/img/icon-5.png" alt="">
-                        </a>
-                        <span class="tabbar-label col-fff text-center">Home</span>
-                    </div>
-                </div>
-                <div class="col-4-auto col-3-auto">
-                    <div class="card demo-card-header-pic">
-                        <a href="/buyer-select/" valign="middle" class="card-header w-100">
-                            <img class="w-100-384" src="/img/icon-6.png" alt="">
-                        </a>
-                        <span class="tabbar-label col-fff text-center">Services</span>
-                    </div>
-                </div>
-                <div class="col-4-auto col-3-auto">
-                    <div class="card demo-card-header-pic">
-                        <a href="/buyer-select/" valign="middle" class="card-header w-100">
-                            <img class="w-100-384" src="/img/icon-7.png" alt="">
-                        </a>
-                        <span class="tabbar-label col-fff text-center">Book</span>
-                    </div>
-                </div>
-                <div class="col-4-auto col-3-auto">
-                    <div class="card demo-card-header-pic">
-                        <a href="/buyer-select/" valign="middle" class="card-header w-100">
-                            <img class="w-100-384" src="/img/icon-8.png" alt="">
-                        </a>
-                        <span class="tabbar-label col-fff text-center"></span>
-                    </div>
-                </div>
-                <div class="col-4-auto col-3-auto">
-                    <div class="card demo-card-header-pic">
-                        <a href="/buyer-select/" valign="middle" class="card-header w-100">
-                            <img class="w-100-384" src="/img/icon-8.png" alt="">
-                        </a>
-                        <span class="tabbar-label col-fff text-center"></span>
-                    </div>
-                </div>
-            </div>
+                {{/each}}
+            </div> 
+           
         </div>
     </div>
 </template>

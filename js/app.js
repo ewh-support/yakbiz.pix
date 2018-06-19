@@ -10,28 +10,7 @@ var app = new Framework7({
   // App root data
   data: function () {
     return {
-      // apibackend: 'http://103.199.18.44:2990/api',
-      // user: {
-      //   firstName: 'John',
-      //   lastName: 'Doe',
-      // },
-      // // Demo products for Catalog section
-      // products: [{
-      //     id: '1',
-      //     title: 'Apple iPhone 8',
-      //     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.'
-      //   },
-      //   {
-      //     id: '2',
-      //     title: 'Apple iPhone 8 Plus',
-      //     description: 'Velit odit autem modi saepe ratione totam minus, aperiam, labore quia provident temporibus quasi est ut aliquid blanditiis beatae suscipit odio vel! Nostrum porro sunt sint eveniet maiores, dolorem itaque!'
-      //   },
-      //   {
-      //     id: '3',
-      //     title: 'Apple iPhone X',
-      //     description: 'Expedita sequi perferendis quod illum pariatur aliquam, alias laboriosam! Vero blanditiis placeat, mollitia necessitatibus reprehenderit. Labore dolores amet quos, accusamus earum asperiores officiis assumenda optio architecto quia neque, quae eum.'
-      //   },
-      // ]
+
     };
   },
   // App root methods
@@ -62,7 +41,7 @@ var settingsView = app.views.create('#view-settings', {
 // axios.defaults.baseURL = apibackend;
 var pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
 axios.defaults.baseURL = pixUrl;
-axios.defaults.headers.common['Authorization'] = localStorage.accessToken;
+//axios.defaults.headers.common['Authorization'] = localStorage.access_token;
 
 app.on('pageInit', function (page) {
   console.log('localStorage', localStorage);
@@ -145,7 +124,17 @@ function login() {
     type: type,
     user_type: user_type
   };
-  console.log('credentials', credentials);
+  //console.log('credentials', credentials);
+
+  var notificationClickToClose = app.notification.create({
+    // icon: '<i class="icon demo-icon">7</i>',
+    title: 'Notification',
+    titleRightText: 'now',
+    subtitle: 'Login failed wrong username or password',
+    // text: 'Click me to close',
+    closeOnClick: true,
+    closeTimeout: 2000
+  })
 
   var successNotification = app.notification.create({
     // icon: '<i class="icon demo-icon">7</i>',
@@ -165,6 +154,7 @@ function login() {
       localStorage.isAuthenticated = 'true'; //là string, ko phải bool
       localStorage.access_token = data.access_token;
       localStorage.user = data.user_data.username;
+      localStorage.user_type = "2"; //buyer =1 , seller = 2
       //localStorage.ttl = data.ttl; //ttl: time to lease, thời gian mà accesstoken hết hạn
       //axios.defaults.headers.common['Authorization'] = localStorage.access_token;
 
@@ -178,6 +168,7 @@ function login() {
     }
   }).catch(function (error) {
     console.log('err', error);
+    notificationClickToClose.open();
   });
 }
 

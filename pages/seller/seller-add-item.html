@@ -15,6 +15,7 @@
             <div class="list inline-labels no-hairlines-md">
                 <form class="list form-store-data" id="form-request">
                     <ul>
+
                         <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">Category</div>
@@ -24,6 +25,7 @@
                                         <option value="{{id}}">{{name}}</option>
                                         {{/each}}
                                     </select>
+
                                 </div>
                             </div>
                         </li>
@@ -42,16 +44,16 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Name</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" placeholder="Name">
+                                    <input type="text" name="name" placeholder="Name">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
                         </li>
                         <li class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label">Model</div>
+                                <div class="item-title item-label"></div>
                                 <div class="item-input-wrap">
-                                    <input type="text" placeholder="Model">
+                                    <input type="text" name="model" placeholder="Model">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
@@ -60,7 +62,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Measure</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" placeholder="Measure">
+                                    <input type="text" name="measure" placeholder="Measure">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
@@ -69,7 +71,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Code</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" placeholder="Code">
+                                    <input type="text" name="code" placeholder="Code">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
@@ -78,7 +80,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Price</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" placeholder="Price">
+                                    <input type="text" name="price" placeholder="Price">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
@@ -89,11 +91,11 @@
                                 <div class="item-input-wrap">
                                     <p>
                                         <label class="radio">
-                                            <input type="radio" name="demo-radio-inline">
+                                            <input type="radio" name="vat" value="1">
                                             <i class="icon-radio"></i>
                                         </label> Yes
                                         <label class="radio">
-                                            <input type="radio" name="demo-radio-inline">
+                                            <input type="radio" name="vat" value="0">
                                             <i class="icon-radio"></i>
                                         </label> No</p>
                                 </div>
@@ -104,7 +106,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Description</div>
                                 <div class="item-input-wrap">
-                                    <textarea placeholder="Description"></textarea>
+                                    <textarea name="description" placeholder="Description"></textarea>
                                 </div>
                             </div>
                         </li>
@@ -133,6 +135,26 @@
         },
         on: {
             pageInit: function (e, page) {
+                // Create notification with click to close
+                var notificationSuccess = app.notification.create({
+                    // icon: '<i class="icon demo-icon">7</i>',
+                    title: 'Notification',
+                    titleRightText: 'now',
+                    subtitle: 'Your product was created successfully!',
+                    text: 'Click me to close',
+                    closeOnClick: true,
+                    closeTimeout: 2000
+                })
+
+                var notificationFailed = app.notification.create({
+                    // icon: '<i class="icon demo-icon">7</i>',
+                    title: 'Notification',
+                    titleRightText: 'now',
+                    subtitle: 'Your product was created failed!',
+                    text: 'Click me to close',
+                    closeOnClick: true,
+                    closeTimeout: 2000
+                })
 
                 //on change when select category
                 $$('#category-button').change(function () {
@@ -168,9 +190,26 @@
                 })
 
                 $$('.convert-form-to-data').on('click', function () {
-                        console.log('POST');
-                    }
-                }
-            }
+                    var formData = app.form.convertToData('#form-request');
+                    console.log('formData', formData);
+
+                    //POST
+                    let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+                    axios.defaults.baseURL = pixUrl;
+                    axios.post('api/v1/seller/products', formData).then(function (response) {
+                        console.log('res', response);
+                        notificationSuccess.open();
+                        app.views.main.router.navigate('/seller-list/');
+                    }).catch(function (error) {
+                        console.log('err', error);
+                        notificationFailed.open();
+
+                    })
+
+                });
+
+
+            },
         }
+    }
 </script>
