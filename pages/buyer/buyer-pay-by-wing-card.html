@@ -1,18 +1,29 @@
 <template>
     <div class="page">
         <div class="navbar">
-            <div class="navbar-inner sliding">
-                <div class="left">
-                    <a href="#" class="link back">
-                        <i class="icon icon-back"></i>
-                        <span class="ios-only">Back</span>
-                    </a>
+            <div class="navbar-inner sliding row">
+                <div class="col-45">
+                    <div class="row">
+                        <div class="col-20">
+                            <div class="left">
+                                <a href="#" class="link back">
+                                    <img src="/img/icon-back.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-80">
+                            <div class="title">Back</div>
+                        </div>
+                    </div>             
+                </div>   
+                <div class="col-55 fix-center-img">
+                    <img src="/img/icon-user.png" alt="">
                 </div>
-                <div class="title">Pay by Wing Card</div>
             </div>
         </div>
         <div class="page-content">
-            <div class="block-title">Pay by Wing Card</div>
+            <div class="login-screen-title text-left"><a class="style-tag-a" title="">Pay By Wing Card</a>
+            </div>
             <div class="row">
                 <div class="col"></div>
                 <div class="col">
@@ -27,36 +38,49 @@
                 <div class="col"></div>
             </div>
 
-            <div class="list inline-labels no-hairlines-md">
-                <ul>
-                    <li class="item-content item-input">
-                        <div class="item-inner">
-                            <div class="item-title item-label">Account Number</div>
-                            <div class="item-input-wrap">
-                                <input type="number" placeholder="Type your account number">
-                                <span class="input-clear-button"></span>
+            <div class="list">
+                <form class="list form-store-data" id="form-request">
+                    <ul>
+                        
+                        <li class="item-content item-input mg-b-20">
+                            <div class="row w-100">
+                                <div class="col-30">
+                                    <div class="item-title item-label style_lable_sign">Account Number</div>
+                                </div>
+                                <div class="col-70">
+                                    <div class="item-input-wrap">
+                                        <input class="style-input mg-r-15" type="text" name="accountNumber" placeholder="123456789" >
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="item-content item-input">
-                        <div class="item-inner">
-                            <div class="item-title item-label">Expire</div>
-                            <div class="item-input-wrap">
-                                <input type="date" value="2014-04-30" placeholder="Please choose...">
+                        </li>
+                        <li class="item-content item-input mg-b-20">
+                            <div class="row w-100">
+                                <div class="col-30">
+                                    <div class="item-title item-label style_lable_sign">Expire</div>
+                                </div>
+                                <div class="col-70">
+                                    <div class="item-input-wrap">
+                                        <input class="style-input mg-r-15" type="number" name="month" id="month">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="item-content item-input">
-                        <div class="item-inner">
-                            <div class="item-title item-label">Code</div>
-                            <div class="item-input-wrap">
-                                <input type="number" placeholder="Type your code">
-                                <span class="input-clear-button"></span>
+                        </li>
+                        <li class="item-content item-input mg-b-20">
+                            <div class="row w-100">
+                                <div class="col-30">
+                                    <div class="item-title item-label style_lable_sign">Code</div>
+                                </div>
+                                <div class="col-70">
+                                    <div class="item-input-wrap">
+                                        <input class="style-input mg-r-15" type="text" name="code" >
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                        </li>
+                        
+                    </ul>
+                </form>
 
             <div class="block">
                 <div class="row">

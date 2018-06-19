@@ -1,25 +1,35 @@
 <template>
     <div class="page">
-        <div class="navbar">
-            <div class="navbar-inner sliding">
-                <div class="left">
-                    <a href="#" class="link back">
-                        <i class="icon icon-back"></i>
-                        <span class="ios-only">Back</span>
-                    </a>
+        <div class="navbar bg-fff">
+            <div class="navbar-inner sliding row">
+                <div class="col-45">
+                    <div class="row">
+                        <div class="col-20">
+                            <div class="left">
+                                <a href="#" class="link back">
+                                    <img src="/img/icon-back.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-80">
+                            <div class="title color-222">Back</div>
+                        </div>
+                    </div>             
+                </div>   
+                <div class="col-55 fix-center-img">
+                    <img src="/img/icon-user.png" alt="">
                 </div>
-                <div class="title">Items Selected</div>
             </div>
         </div>
         <div class="page-content">
-            <div class="block-title">Items Selected</div>
+            <div class="sp-screen-title text-left mg-b-15"><a class="style-tag-a" title="">Items Selected</a></div>
             <div class="card demo-card-header-pic">
-                <div class="row no-gap">
-                    <div class="col-20">
-                        <div style="background-image:url(https://phucanhcdn.com/media/product/31353-laptop-hp-envy-13-ad159tu.jpg); height: 20vw;"
-                            valign="bottom" class="card-header"></div>
+                <div class="row no-gap mg-b-15 pd-15">
+                    <div class="col-30">
+                        <div style="background-image:url(https://phucanhcdn.com/media/product/31353-laptop-hp-envy-13-ad159tu.jpg); height: 20vw; width: 100%; background-size: cover; background-position: center;"
+                            valign="bottom" class="card-header-pro"></div>
                     </div>
-                    <div class="col-50">
+                    <div class="col-70 style-sp">
                         <p>
                             <b>Hp super workstation core i7</b>
                         </p>
@@ -30,23 +40,65 @@
                         <p>
                             <i>Expire Date: 12/12/2019</i>
                         </p>
-                    </div>
-                    <div class="col-30">
-                        <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 39px">
-                            <div class="stepper-button-minus"></div>
-                            <div class="stepper-input-wrap">
-                                <input type="text" value="0" min="0" max="100" step="1" readonly>
+                        <div class="star_rating text-left">
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
+                        </div>
+                        <div class="col-30 text-left">
+                            <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 5px; margin-left: 10px">
+                                <div class="stepper-button-minus"></div>
+                                <div class="stepper-input-wrap">
+                                    <input type="text" value="0" min="0" max="100" step="1" readonly>
+                                </div>
+                                <div class="stepper-button-plus"></div>
                             </div>
-                            <div class="stepper-button-plus"></div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="row no-gap mg-b-15 pd-15">
+                    <div class="col-30">
+                        <div style="background-image:url(https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05861033.png); height: 20vw; width: 100%; background-size: cover; background-position: center;"
+                            valign="bottom" class="card-header-pro"></div>
+                    </div>
+                    <div class="col-70 style-sp">
+                        <p>
+                            <b>Hp super workstation core i7</b>
+                        </p>
+                        <p style="color: green">Yak capital</p>
+                        <p>Price:
+                            <span style="color: red">$10.000</span>
+                        </p>
+                        <p>
+                            <i>Expire Date: 12/12/2019</i>
+                        </p>
+                        <div class="star_rating text-left">
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
+                        </div>
+                        <div class="col-30 text-left">
+                            <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 5px; margin-left: 10px">
+                                <div class="stepper-button-minus"></div>
+                                <div class="stepper-input-wrap">
+                                    <input type="text" value="0" min="0" max="100" step="1" readonly>
+                                </div>
+                                <div class="stepper-button-plus"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row no-gap">
-                    <div class="col-20">
-                        <div style="background-image:url(https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05861033.png); height: 20vw;"
-                            valign="bottom" class="card-header"></div>
+                <div class="row no-gap mg-b-15 pd-15">
+                    <div class="col-30">
+                        <div style="background-image:url(https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05656800.png); height: 20vw; width: 100%; background-size: cover; background-position: center;"
+                            valign="bottom" class="card-header-pro"></div>
                     </div>
-                    <div class="col-50">
+                    <div class="col-70 style-sp">
                         <p>
                             <b>Hp super workstation core i7</b>
                         </p>
@@ -57,23 +109,30 @@
                         <p>
                             <i>Expire Date: 12/12/2019</i>
                         </p>
-                    </div>
-                    <div class="col-30">
-                        <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 39px">
-                            <div class="stepper-button-minus"></div>
-                            <div class="stepper-input-wrap">
-                                <input type="text" value="0" min="0" max="100" step="1" readonly>
+                        <div class="star_rating text-left">
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
+                        </div>
+                        <div class="col-30 text-left">
+                            <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 5px; margin-left: 10px">
+                                <div class="stepper-button-minus"></div>
+                                <div class="stepper-input-wrap">
+                                    <input type="text" value="0" min="0" max="100" step="1" readonly>
+                                </div>
+                                <div class="stepper-button-plus"></div>
                             </div>
-                            <div class="stepper-button-plus"></div>
                         </div>
                     </div>
                 </div>
-                <div class="row no-gap">
-                    <div class="col-20">
-                        <div style="background-image:url(https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05656800.png); height: 20vw;"
-                            valign="bottom" class="card-header"></div>
+                <div class="row no-gap mg-b-15 pd-15">
+                    <div class="col-30">
+                        <div style="background-image:url(https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05380426.png); height: 20vw; width: 100%; background-size: cover; background-position: center;"
+                            valign="bottom" class="card-header-pro"></div>
                     </div>
-                    <div class="col-50">
+                    <div class="col-70 style-sp">
                         <p>
                             <b>Hp super workstation core i7</b>
                         </p>
@@ -84,23 +143,30 @@
                         <p>
                             <i>Expire Date: 12/12/2019</i>
                         </p>
-                    </div>
-                    <div class="col-30">
-                        <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 39px">
-                            <div class="stepper-button-minus"></div>
-                            <div class="stepper-input-wrap">
-                                <input type="text" value="0" min="0" max="100" step="1" readonly>
+                        <div class="star_rating text-left">
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
+                        </div>
+                        <div class="col-30 text-left">
+                            <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 5px; margin-left: 10px">
+                                <div class="stepper-button-minus"></div>
+                                <div class="stepper-input-wrap">
+                                    <input type="text" value="0" min="0" max="100" step="1" readonly>
+                                </div>
+                                <div class="stepper-button-plus"></div>
                             </div>
-                            <div class="stepper-button-plus"></div>
                         </div>
                     </div>
                 </div>
-                <div class="row no-gap">
-                    <div class="col-20">
-                        <div style="background-image:url(https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05380426.png); height: 20vw;"
-                            valign="bottom" class="card-header"></div>
+                <div class="row no-gap mg-b-15 pd-15">
+                    <div class="col-30">
+                        <div style="background-image:url(https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05038439.png); height: 20vw; width: 100%; background-size: cover; background-position: center;"
+                            valign="bottom" class="card-header-pro"></div>
                     </div>
-                    <div class="col-50">
+                    <div class="col-70 style-sp">
                         <p>
                             <b>Hp super workstation core i7</b>
                         </p>
@@ -111,41 +177,21 @@
                         <p>
                             <i>Expire Date: 12/12/2019</i>
                         </p>
-                    </div>
-                    <div class="col-30">
-                        <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 39px">
-                            <div class="stepper-button-minus"></div>
-                            <div class="stepper-input-wrap">
-                                <input type="text" value="0" min="0" max="100" step="1" readonly>
-                            </div>
-                            <div class="stepper-button-plus"></div>
+                        <div class="star_rating text-left">
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class="checked"><img src="/img/s3.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
+                            <span class=""><img src="/img/s1.png" alt=""></span>
                         </div>
-                    </div>
-                </div>
-                <div class="row no-gap">
-                    <div class="col-20">
-                        <div style="background-image:url(https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05038439.png); height: 20vw;"
-                            valign="bottom" class="card-header"></div>
-                    </div>
-                    <div class="col-50">
-                        <p>
-                            <b>Hp super workstation core i7</b>
-                        </p>
-                        <p style="color: green">Yak capital</p>
-                        <p>Price:
-                            <span style="color: red">$10.000</span>
-                        </p>
-                        <p>
-                            <i>Expire Date: 12/12/2019</i>
-                        </p>
-                    </div>
-                    <div class="col-30">
-                        <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 39px">
-                            <div class="stepper-button-minus"></div>
-                            <div class="stepper-input-wrap">
-                                <input type="text" value="0" min="0" max="100" step="1" readonly>
+                        <div class="col-30 text-left">
+                            <div class="stepper stepper-init stepper-fill color-red" style="padding-top: 5px; margin-left: 10px">
+                                <div class="stepper-button-minus"></div>
+                                <div class="stepper-input-wrap">
+                                    <input type="text" value="0" min="0" max="100" step="1" readonly>
+                                </div>
+                                <div class="stepper-button-plus"></div>
                             </div>
-                            <div class="stepper-button-plus"></div>
                         </div>
                     </div>
                 </div>
