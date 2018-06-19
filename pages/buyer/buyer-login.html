@@ -55,7 +55,7 @@
         on: {
             pageInit: function (e, page) {
                 // Create notification with click to close
-                
+
                 var notificationClickToClose = app.notification.create({
                     // icon: '<i class="icon demo-icon">7</i>',
                     title: 'Notification',
@@ -65,7 +65,7 @@
                     closeOnClick: true,
                     closeTimeout: 2000
                 })
-                
+
                 $$('.convert-form-to-data').on('click', function () {
                     console.log('LOIGIN');
                     var formData = app.form.convertToData('#buyer-login-form');
@@ -76,25 +76,24 @@
 
                     console.log(JSON.stringify(formData));
 
-                    let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
-                    axios.defaults.baseURL = pixUrl;
+                    //let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+                    //axios.defaults.baseURL = pixUrl;
                     axios.post('api/v1/auth/login', formData).then(function (response) {
-                            console.log('res', response);
-                            console.log('res.data', response.data);
+                        console.log('res', response);
+                        console.log('res.data', response.data);
 
-                            localStorage.isAuthenticated = 'true';
-                            localStorage.user = response.data.data.user_data.username;
-                            localStorage.user_type = response.data.data.user_data.user_type;
-                            localStorage.access_token = response.data.data.access_token;
-                            axios.defaults.headers.common['Authorization'] = localStorage.access_token;
+                        localStorage.isAuthenticated = 'true';
+                        localStorage.user = response.data.data.user_data.username;
+                        localStorage.user_type = response.data.data.user_data.user_type;
+                        localStorage.access_token = response.data.data.access_token;
+                        axios.defaults.headers.common['Authorization'] = localStorage.access_token;
+                        if (localStorage.access_token)
+                            app.views.main.router.navigate('/buyer-main/');
+                    }).catch(function (error) {
+                        console.log('err', error);
+                        notificationClickToClose.open();
 
-                            return app.views.main.router.navigate('/buyer-main/'); 
-                        }) 
-                        .catch(function (error) {
-                            console.log('err', error);
-                            notificationClickToClose.open();
-
-                        })
+                    })
 
 
                 });

@@ -22,8 +22,6 @@ routes = [{
     path: '/seller-list/',
     async: function (routeTo, routeFrom, resolve, reject) {
       let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
-      console.log('storage', localStorage);
-      console.log('storage access_token', localStorage.access_token);
 
       //noti
       var notificationFailed = app.notification.create({
@@ -36,8 +34,9 @@ routes = [{
         closeTimeout: 2000
       })
 
-      axios.defaults.baseURL = pixUrl;
+      // axios.defaults.baseURL = pixUrl;
       axios.defaults.headers.common['Authorization'] = localStorage.access_token;
+      console.log('storage', localStorage);
       axios.get('api/v1/seller/products').then(res => {
         console.log('res', res);
         var data = res.data.data;
@@ -54,7 +53,7 @@ routes = [{
         });
       }).catch(err => {
         console.log('err', err.response);
-        notificationFailed.open();
+        //notificationFailed.open();
       })
 
     }
@@ -206,6 +205,7 @@ routes = [{
       axios.defaults.baseURL = pixUrl;
 
       //get category in market
+      axios.defaults.headers.common['Authorization'] = localStorage.access_token;
       axios.get('api/v1/market/categories').then(res => {
         var data = res.data.data;
         console.log('data GET', data);
@@ -225,10 +225,36 @@ routes = [{
     }
   },
   {
+    //path: '/buyer-company-list/',
+    // componentUrl: './pages/buyer/buyer-company-list.html',
     path: '/buyer-company-list/',
-    componentUrl: './pages/buyer/buyer-company-list.html'
+    async: function (routeTo, routeFrom, resolve, reject) {
+      let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+      axios.defaults.baseURL = pixUrl;
+
+      //get category in market
+      axios.defaults.headers.common['Authorization'] = localStorage.access_token;
+      axios.get('api/v1/market/companies').then(res => {
+        var data = res.data.data;
+        console.log('data GET', data);
+        resolve({
+          componentUrl: './pages/buyer/buyer-company-list.html'
+
+        }, {
+          context: {
+            data: data, //chỉ cần truyền thông tin ngoài form
+          }
+        });
+      }).catch(err => {
+        console.log('err', err.response);
+        notificationFailed.open();
+      })
+
+    }
+
   },
   {
+    //product list
     path: '/buyer-select/:id',
     async: function (routeTo, routeFrom, resolve, reject) {
       // Router instance
@@ -291,8 +317,43 @@ routes = [{
     componentUrl: './pages/buyer/buyer-product-info.html'
   },
   {
-    path: '/buyer-product-description/',
-    componentUrl: './pages/buyer/buyer-product-description.html'
+    path: '/buyer-product-description/:id',
+    componentUrl: './pages/buyer/buyer-product-description.html',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      // Router instance
+      var router = this;
+      // App instance 
+      var app = router.app;
+
+      // Show Preloader
+      app.preloader.show();
+
+      var id = routeTo.params.id;
+      console.log('buyer-select | id', id);
+      axios.get('api/v1/market/products/' + id).then(function (response) {
+          var data = response.data.data;
+          console.log('data', data);
+
+          //app.form.fillFromData('#my-form-edit-product', data)
+          resolve({
+              componentUrl: './pages/buyer/buyer-product-description.html'
+            }, {
+              context: {
+                data: data
+              }
+            }
+
+          );
+        })
+        .catch(function (error) {
+          console.log('error', error.response);
+        })
+
+      // Hide Preloader
+      app.preloader.hide();
+      return true;
+
+    }
   },
   {
     path: '/buyer-login/',
@@ -615,7 +676,8 @@ routes = [{
   //       // Resolve route to load page
   //       resolve({
   //         templateUrl: './pages/news-detail.html',
-  //       }, {
+  // 
+  // }, {
   //           context: {
   //             news_detail: data, //chỉ cần truyền thông tin ngoài form
   //           }
@@ -631,5 +693,5 @@ routes = [{
   {
     path: '(.*)',
     url: './pages/404.html',
-  },
+  }
 ];
