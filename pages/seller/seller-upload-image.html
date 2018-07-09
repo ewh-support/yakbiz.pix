@@ -1,41 +1,72 @@
 <div class="page">
-    <div class="navbar">
-        <div class="navbar-inner sliding">
-            <div class="left">
-                <a href="#" class="link back">
-                    <i class="icon icon-back"></i>
-                    <span class="ios-only">Back</span>
-                </a>
-            </div>
-            <div class="title">Add Items</div>
+    <div class="navbar bg-fff">
+        <div class="navbar-inner sliding row">
+            <div class="col-45">
+                <div class="row">
+                    <div class="col-20">
+                        <div class="left">
+                            <a href="#" class="link back">
+                                <img src="/img/icon-back.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-80">
+                        <div class="title color-222">Back</div>
+                    </div>
+                </div>             
+            </div>   
         </div>
     </div>
-    <div class="page-content grid-demo">
-        <div class="block-title">Upload Images</div>
+    <div class="page-content grid-demo" style="margin-top: 30px">
+        <div class="login-screen-title text-left"><a class="style-tag-a" title="">Upload Images</a></div>
+        <!-- Update layout lại theo dạng <img> -->
+        <!-- <div class="block">
+            <div class="row">
+                <div class="col-50 tablet-25">
+                    <img id="myImage1" alt="" width="200" height="200">
+                </div>
+                <div class="col-50 tablet-25">
+                    <img id="myImage2" alt="" width="200" height="200">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50 tablet-25">
+                    <img id="myImage3" alt="" width="200" height="200">
+                </div>
+                <div class="col-50 tablet-25">
+                    <img id="myImage4" alt="" width="200" height="200">
+                </div>
+            </div>
+        </div> -->
+        
         <div class="block">
             <div class="row">
                 <div class="col-50 tablet-25">
                     <div class="card demo-card-header-pic">
-                        <div style="background-image:url(https://4.img-dpreview.com/files/p/TC190x190S190x190~sample_galleries/3863964018/6138091007.jpg)"
-                            valign="bottom" class="card-header"></div>
+                        <div valign="bottom" class="w-100">
+                            <img class="w-100" src="https://4.img-dpreview.com/files/p/TC190x190S190x190~sample_galleries/3863964018/6138091007.jpg" alt="">
+                        </div> 
                     </div>
                 </div>
                 <div class="col-50 tablet-25">
                     <div class="card demo-card-header-pic">
-                        <div style="background-image:url(https://2.img-dpreview.com/files/p/TC190x190S190x190~sample_galleries/9414440590/0260683293.jpg)"
-                            valign="bottom" class="card-header"></div>
+                        <div valign="bottom" class="w-100">
+                                <img class="w-100" src="https://2.img-dpreview.com/files/p/TC190x190S190x190~sample_galleries/9414440590/0260683293.jpg" alt="">
+                            </div>
                     </div>
                 </div>
                 <div class="col-50 tablet-25">
                     <div class="card demo-card-header-pic">
-                        <div style="background-image:url(https://3.img-dpreview.com/files/p/TC190x190S190x190~sample_galleries/8904657965/9095506342.jpg)"
-                            valign="bottom" class="card-header"></div>
+                        <div valign="bottom" class="w-100">
+                            <img class="w-100" src="https://3.img-dpreview.com/files/p/TC190x190S190x190~sample_galleries/8904657965/9095506342.jpg" alt="">  
+                        </div>
                     </div>
                 </div>
                 <div class="col-50 tablet-25">
                     <div class="card demo-card-header-pic">
-                        <div style="background-image:url(https://4.img-dpreview.com/files/p/TC190x190S190x190~sample_galleries/2340689509/9681932065.jpg)"
-                            valign="bottom" class="card-header"></div>
+                        <div valign="bottom" class="w-100">
+                            <img class="w-100" src="https://4.img-dpreview.com/files/p/TC190x190S190x190~sample_galleries/2340689509/9681932065.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,7 +88,7 @@
         </div>
 
         <div class="block">
-            <div class="row">
+            <div class="row" style="padding-bottom: 15px;">
                 <div class="col"></div>
                 <div class="col">
                     <a href="/seller-list/" class="col button button-fill">Save</a>

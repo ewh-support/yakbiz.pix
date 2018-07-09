@@ -136,290 +136,141 @@ routes = [{
         }, function () {
           handleLocationError(true, infoWindow, map.getCenter());
         });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
       }
-    }
-  },
-  //seller after sign in
-  {
-    path: '/seller-list/',
-    async: function (routeTo, routeFrom, resolve, reject) {
-      let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
 
-      //noti
-      var notificationFailed = app.notification.create({
-        // icon: '<i class="icon demo-icon">7</i>',
-        title: 'Notification',
-        titleRightText: 'now',
-        subtitle: 'Access token has expired || invalid!',
-        text: 'Click me to close',
-        closeOnClick: true,
-        closeTimeout: 2000
-      })
+      function addYourLocationButton(map, marker) {
+        var controlDiv = document.createElement('div');
 
-      // axios.defaults.baseURL = pixUrl;
-      axios.defaults.headers.common['Authorization'] = localStorage.access_token;
-      console.log('storage', localStorage);
-      axios.get('api/v1/seller/products').then(res => {
-        console.log('res', res);
-        var data = res.data.data;
-        console.log('res data', data);
+        var firstChild = document.createElement('button');
+        firstChild.style.backgroundColor = '#fff';
+        firstChild.style.border = 'none';
+        firstChild.style.outline = 'none';
+        firstChild.style.width = '28px';
+        firstChild.style.height = '28px';
+        firstChild.style.borderRadius = '2px';
+        firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
+        firstChild.style.cursor = 'pointer';
+        firstChild.style.marginRight = '10px';
+        firstChild.style.padding = '0px';
+        firstChild.title = 'Your Location';
+        controlDiv.appendChild(firstChild);
 
-        resolve({
-          // templateUrl: './pages/seller/seller-list.html',
-          componentUrl: './pages/seller/seller-list.html'
+        var secondChild = document.createElement('div');
+        secondChild.style.margin = '5px';
+        secondChild.style.width = '18px';
+        secondChild.style.height = '18px';
+        secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-1x.png)';
+        secondChild.style.backgroundSize = '180px 18px';
+        secondChild.style.backgroundPosition = '0px 0px';
+        secondChild.style.backgroundRepeat = 'no-repeat';
+        secondChild.id = 'you_location_img';
+        firstChild.appendChild(secondChild);
 
-        }, {
-          context: {
-            data: data, //chỉ cần truyền thông tin ngoài form
+        google.maps.event.addListener(map, 'dragend', function () {
+          $$('#you_location_img').css('background-position', '0px 0px');
+        });
+
+        firstChild.addEventListener('click', function () {
+          var imgX = '0';
+          var animationInterval = setInterval(function () {
+            if (imgX == '-18') imgX = '0';
+            else imgX = '-18';
+            $$('#you_location_img').css('background-position', imgX + 'px 0px');
+          }, 500);
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+              var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+              marker.setPosition(latlng);
+              map.setCenter(latlng);
+              clearInterval(animationInterval);
+              $$('#you_location_img').css('background-position', '-144px 0px');
+            });
+          }
+          else {
+            clearInterval(animationInterval);
+            $$('#you_location_img').css('background-position', '0px 0px');
           }
         });
-      }).catch(err => {
-        console.log('err', err.response);
-        //notificationFailed.open();
-      })
+
+        controlDiv.index = 1;
+        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
+      }
+
 
     }
-  },
-  //seller add items
-  {
-    path: '/seller-add-item/',
-    async: function (routeTo, routeFrom, resolve, reject) {
-      //get category
-      axios.get('api/v1/common/categories').then(res => {
-        let data = res.data.data;
-        console.log('GET data_category', data);
-        resolve({
-          componentUrl: './pages/seller/seller-add-item.html'
-        }, {
+  }
+},
+{
+  path: '/catalog/',
+  componentUrl: './pages/catalog.html',
+},
+{
+  path: '/product/:id/',
+  componentUrl: './pages/product.html',
+},
+{
+  path: '/settings/',
+  url: './pages/settings.html',
+},
+// Page Loaders & Router
+{
+  path: '/page-loader-template7/:user/:userId/:posts/:postId/',
+  templateUrl: './pages/page-loader-template7.html',
+},
+{
+  path: '/page-loader-component/:user/:userId/:posts/:postId/',
+  componentUrl: './pages/page-loader-component.html',
+},
+{
+  path: '/request-and-load/user/:userId/',
+  async: function (routeTo, routeFrom, resolve, reject) {
+    // Router instance
+    var router = this;
+
+    // App instance
+    var app = router.app;
+
+    // Show Preloader
+    app.preloader.show();
+
+    // User ID from request
+    var userId = routeTo.params.userId;
+
+    // Simulate Ajax Request
+    setTimeout(function () {
+      // We got user data from request
+      var user = {
+        firstName: 'Vladimir',
+        lastName: 'Kharlampidi',
+        about: 'Hello, i am creator of Framework7! Hope you like it!',
+        links: [{
+          title: 'Framework7 Website',
+          url: 'http://framework7.io',
+        },
+        {
+          title: 'Framework7 Forum',
+          url: 'http://forum.framework7.io',
+        },
+        ]
+      };
+      // Hide Preloader
+      app.preloader.hide();
+
+      // Resolve route to load page
+      resolve({
+        componentUrl: './pages/request-and-load.html',
+      }, {
           context: {
-            data_category: data, //chỉ cần truyền thông tin ngoài form
-          }
-        });
-      }).catch(err => {
-        console.log('err', err.response);
-      })
-
-      //get sub category
-      axios.get('api/v1/common/categories/2').then(res => {
-        let data = res.data.data;
-        console.log('GET data_category', data);
-        resolve({
-          componentUrl: './pages/seller/seller-add-item.html'
-        }, {
-          context: {
-            data_sub_category: data, //chỉ cần truyền thông tin ngoài form
-          }
-        });
-      }).catch(err => {
-        console.log('err', err.response);
-      })
-
-    }
-  },
-  {
-    path: '/seller-upload-image/',
-    url: './pages/seller/seller-upload-image.html'
-  },
-  {
-    path: '/seller-sign-up/',
-    componentUrl: './pages/seller/seller-sign-up.html'
-  },
-  {
-    path: '/seller-edit-account/',
-    componentUrl: './pages/seller/seller-edit-account.html',
-  },
-  {
-    path: '/seller-product-detail/:id',
-    componentUrl: './pages/seller/seller-product-detail.html',
-    // path: '/pages/news-detail/:id/',
-    // templateUrl: './pages/news-detail.html',
-    async: function (routeTo, routeFrom, resolve, reject) {
-      var id = routeTo.params.id;
-      console.log('news detail | id', id)
-
-      let pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
-      console.log('storage', localStorage);
-      console.log('storage access_token', localStorage.access_token);
-
-      //noti
-      var notificationFailed = app.notification.create({
-        // icon: '<i class="icon demo-icon">7</i>',
-        title: 'Notification',
-        titleRightText: 'now',
-        subtitle: 'Get product detail failed!',
-        text: 'Click me to close',
-        closeOnClick: true,
-        closeTimeout: 2000
-      })
-
-      axios.defaults.baseURL = pixUrl;
-      axios.defaults.headers.common['Authorization'] = localStorage.access_token;
-
-      axios.get('api/v1/seller/products/' + id).then(res => {
-        console.log('res', res);
-        var data = res.data.data;
-        console.log('res data', data);
-
-        resolve({
-          // templateUrl: './pages/seller/seller-list.html',
-          componentUrl: './pages/seller/seller-product-detail.html'
-
-        }, {
-          context: {
-            data: data, //chỉ cần truyền thông tin ngoài form
+            user: user,
           }
         });
     }, 1000);
   },
 },
-//easyweb
-// {
-//   path: '/profiles',
-//   on: { //tham khảo https://framework7.io/docs/routes.html#route-events
-//     pageAfterIn: function (e, page) {
-//       // do something after page gets into the view
-//     },
-//     pageInit: function (e, page) {
-//       console.log('do something when page initialized') // do something when page initialized
-//       $$('.convert-form-to-data').on('click', function () {
-//         var formData = app.form.convertToData('#my-profile');
 
-//         //easyweb gọi api để cập nhật dữ liệu, lưu ở formData
-//         console.log(JSON.stringify(formData));
-//         axios.patch('/Users/' + formData.id, formData)
-//           .then(function (response) {
-//             console.log('cập nhật thành công')
-//           })
-//           .catch(function (error) {
-
-//           })
-//       });
-
-//       $$('.fill-form-from-data').on('click', function () {
-//         var oldData = app.form.convertToData('#my-profile');
-//         console.log('object id', oldData.id);
-
-//         var formData = {}; //axios.get()
-//         app.form.fillFromData('#my-form', formData);
-//       });
-//     },
-//   },
-//   async: function (routeTo, routeFrom, resolve, reject) {
-//     // Router instance
-//     var router = this;
-//     // App instance
-//     var app = router.app;
-//     //var axios = app.axios;
-//     if (localStorage.isAuthenticated !== 'true') {
-//       app.dialog.alert('Hãy đăng nhập để truy cập thông tin', 'Thông Báo');
-//       //chưa đăng nhập: có thể hiện ra login
-//       app.loginScreen.open('#my-login-screen');
-//       return;
-//     }
-
-//     // Show Preloader
-//     app.preloader.show();
-
-//     console.log('getUserInfo()')
-//     //lấy thông tin đầy đủ của user
-//     axios.get('/Users/' + localStorage.userId)
-//       .then(function (response) {
-//         console.log(response.data)
-//         var data = response.data;
-//         data.isAuthenticated = true;
-
-//         var formId = 'my-profile';
-//         app.form.storeFormData(formId, data) //
-//         // Resolve route to load page
-//         resolve({
-//           componentUrl: './pages/profiles.html',
-//         }, {
-//             context: {
-//               username: data.username, //chỉ cần truyền thông tin ngoài form
-//             }
-//           }
-
-//         );
-//       })
-//       .catch(function (error) { })
-//     // Hide Preloader
-//     app.preloader.hide();
-//     return true;
-//   },
-// },
-// {
-//   path: '/news/',
-//   async: function (routeTo, routeFrom, resolve, reject) {
-//     // Router instance
-//     var router = this;
-//     // App instance
-//     var app = router.app;
-//     // Show Preloader
-//     app.preloader.show();
-
-//     console.log('get news()')
-
-//     axios.get('http://128.199.153.64:5000/api/BaiViets', {
-//       params: {
-//         filter: {
-//           "trangThai": "PUBLISHED"
-//         }
-//       }
-//     }).then(function (response) {
-//       console.log(response.data)
-//       var data = response.data;
-
-//       // Resolve route to load page
-//       resolve({
-//         templateUrl: './pages/news.html',
-//       }, {
-//           context: {
-//             data_news: data, //chỉ cần truyền thông tin ngoài form
-//           }
-//         });
-//     })
-//       .catch(function (error) { })
-//     // Hide Preloader
-//     app.preloader.hide();
-//     return true;
-//   }
-// },
-// {
-//   /* news detail */
-//   path: '/pages/news-detail/:id/',
-//   templateUrl: './pages/news-detail.html',
-//   async: function (routeTo, routeFrom, resolve, reject) {
-//     // Router instance
-//     var router = this;
-//     // App instance
-//     var app = router.app;
-//     // Show Preloader
-//     app.preloader.show();
-
-//     // User ID from request
-//     var id = routeTo.params.id;
-
-//     console.log('news detail | id', id)
-
-//     axios.get('http://128.199.153.64:5000/api/BaiViets/' + id).then(function (response) {
-//       console.log(response.data)
-//       var data = response.data;
-
-//       // Resolve route to load page
-//       resolve({
-//         templateUrl: './pages/news-detail.html',
-//       }, {
-//           context: {
-//             news_detail: data, //chỉ cần truyền thông tin ngoài form
-//           }
-//         });
-//     })
-//       .catch(function (error) { })
-//     // Hide Preloader
-//     app.preloader.hide();
-//     return true;
-//   }
-// },
 // Default route (404 page). MUST BE THE LAST
 {
   path: '(.*)',
