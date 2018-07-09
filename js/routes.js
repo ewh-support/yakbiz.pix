@@ -1,140 +1,18 @@
 routes = [{
-  path: '/',
-  url: './index.html',
-},
-{
-  path: '/about/',
-  url: './pages/about.html',
-  on: {
-    pageInit: function (e, page) {
-      var map = new google.maps.Map(document.getElementById('gmap'), {
-        center: {
-          lat: 12.7100116,
-          lng: 108.23775190000003
-        },
-        zoom: 8
-      });
-    }
-  }
-},
-//seller after sign in
-{
-  path: '/seller-list/',
-  componentUrl: './pages/seller/seller-list.html'
-},
-//seller add items
-{
-  path: '/seller-add-item/',
-  componentUrl: './pages/seller/seller-add-item.html'
-},
-{
-  path: '/seller-upload-image/',
-  url: './pages/seller/seller-upload-image.html'
-},
-{
-  path: '/seller-sign-up/',
-  url: './pages/seller/seller-sign-up.html'
-},
-{
-  path: '/seller-edit-account/',
-  componentUrl: './pages/seller/seller-edit-account.html'
-},
-{
-  path: '/seller-product-detail/',
-  componentUrl: './pages/seller/seller-product-detail.html'
-},
-//buyer
-{
-  path: '/buyer-main/',
-  componentUrl: './pages/buyer/buyer-main.html'
-},
-{
-  path: '/buyer-company-list/',
-  componentUrl: './pages/buyer/buyer-company-list.html'
-},
-{
-  path: '/buyer-select/',
-  componentUrl: './pages/buyer/buyer-select.html'
-},
-{
-  path: '/buyer-pay-by/',
-  componentUrl: './pages/buyer/buyer-pay-by.html'
-},
-{
-  path: '/buyer-pay-by-wing-card/',
-  componentUrl: './pages/buyer/buyer-pay-by-wing-card.html'
-},
-{
-  path: '/buyer-delivery-infomation/',
-  componentUrl: './pages/buyer/buyer-delivery-infomation.html'
-},
-{
-  path: '/buyer-computer-select/',
-  componentUrl: './pages/buyer/buyer-computer-select.html'
-},
-{
-  path: '/buyer-items-select/',
-  componentUrl: './pages/buyer/buyer-items-select.html'
-},
-{
-  path: '/buyer-product-info/',
-  componentUrl: './pages/buyer/buyer-product-info.html'
-},
-{
-  path: '/buyer-product-description/',
-  componentUrl: './pages/buyer/buyer-product-description.html'
-},
-{
-  path: '/buyer-login/',
-  componentUrl: './pages/buyer/buyer-login.html'
-},
-{
-  path: '/buyer-sign-up/',
-  componentUrl: './pages/buyer/buyer-sign-up.html'
-},
-//old
-{
-  path: '/gop-y/',
-  componentUrl: './pages/request.html'
-},
-//test POST
-{
-  path: '/test-post-product/',
-  componentUrl: './pages/test-post-product.html'
-},
-//test GET
-{
-  path: '/test-get-product/',
-  componentUrl: './pages/test-get-product.html'
-},
-{
-  path: '/map/',
-  url: './pages/map.html',
-  on: {
-    pageInit: function (e, page) {
-      var current = {
-        lat: 12.7100116,
-        lng: 108.23775190000003
-      };
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          current = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          var map = new google.maps.Map(document.getElementById('gmap'), {
-            center: current,
-            zoom: 16
-          });
-          var myMarker = new google.maps.Marker({
-            map: map,
-            animation: google.maps.Animation.DROP,
-            position: current
-          });
-          addYourLocationButton(map, myMarker);
-        }, function () {
-          handleLocationError(true, infoWindow, map.getCenter());
+    path: '/',
+    url: './index.html',
+  },
+  {
+    path: '/about/',
+    url: './pages/about.html',
+    on: {
+      pageInit: function (e, page) {
+        var map = new google.maps.Map(document.getElementById('gmap'), {
+          center: {
+            lat: 12.7100116,
+            lng: 108.23775190000003
+          },
+          zoom: 8
         });
       } else {
         // Browser doesn't support Geolocation

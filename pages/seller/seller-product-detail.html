@@ -1,37 +1,27 @@
 <template>
     <div class="page">
-        <div class="navbar bg-fff">
-            <div class="navbar-inner sliding row">
-                <div class="col-45">
-                    <div class="row">
-                        <div class="col-20">
-                            <div class="left">
-                                <a href="#" class="link back">
-                                    <img src="/img/icon-back.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-80">
-                            <div class="title color-222">Back</div>
-                        </div>
-                    </div>             
-                </div>   
-                <div class="col-55 fix-center-img">
-                    <img src="/img/icon-user.png" alt="">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
                 </div>
+                <div class="title">Description</div>
             </div>
         </div>
         <div class="page-content">
-            <div class="sp-screen-title text-left mg-b-15"><a class="style-tag-a" title="">Imac 2018 Corei 10</a></div>
-            <!--<div class="block">
+            <div class="block-title">HP ENVY Notebook</div>
+            <div class="block">
                 <div class="row">
                     <div class="col">
                         <img style="width: 100%" src="https://phucanhcdn.com/media/product/31353-laptop-hp-envy-13-ad159tu.jpg" alt="">
                     </div>
                 </div>
-            </div> -->
+            </div>
 
-            <!-- <div class="block">
+            <div class="block">
                 <div class="row">
                     <div class="col">
                         <img style="width: 100%" src="https://www8.hp.com/vn/vi/images/table_fpo_one_250x154_tcm2649_2082053_tcm2649_2082051_tcm2649-2082053.png" alt="">
@@ -47,47 +37,30 @@
                     </div>
 
                 </div>
-            </div> -->
+            </div>
 
             <div class="block">
                 <div class="list inline-labels no-hairlines-md">
-                	 <div class="bg-top-after-lodding text-center">
-                           				<img style="width: 30%" src="/img/logo-after-loading.png" alt="">
-                        			</div>
                     <ul>
                         <li class="item-content item-input">
-    						<div class="item-inner">
-        						<div class="row no-gap w-100">
-            						<div class="col-20">
-                						<div class="item-title-des style-font-14">Company</div>
-           			 				</div>
-            						<div class="col-70">
-	                					<div class="item-input-wrap-fix">
-	                						<div class="mg-l-10 style-font-14">Yak Capital</div>
-					                        <div class="star_rating text-left">
-					                            <span class="checked"><img src="/img/s3.png" alt=""></span>
-					                            <span class="checked"><img src="/img/s3.png" alt=""></span>
-					                            <span class="checked"><img src="/img/s3.png" alt=""></span>
-					                            <span class=""><img src="/img/s1.png" alt=""></span>
-					                            <span class=""><img src="/img/s1.png" alt=""></span>
-					                        </div>
-
-	                                     </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label style-font-14">Address</div>
+                                <div class="item-title item-label">Company</div>
                                 <div class="item-input-wrap">
-                                    <textarea class="style-font-14" placeholder="Bio">#12, Street 348, Phum 4, Sangkat Toul Svay Prey 1 Khan Chamkarmon Phnom Penh</textarea>
+                                    <input type="text" placeholder="Company" value="Yak Company">
                                 </div>
                             </div>
                         </li>
                         <li class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label style-font-14">Prices</div>
+                                <div class="item-title item-label">Address</div>
+                                <div class="item-input-wrap">
+                                    <textarea placeholder="Bio">#12, Street 348, Phum 4, Sangkat Toul Svay Prey 1 Khan Chamkarmon Phnom Penh</textarea>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Prices</div>
                                 <div class="item-input-wrap">
                                     <input type="text" placeholder="Prices" value="$130" style="color: red">
                                 </div>
@@ -95,7 +68,7 @@
                         </li>
                         <li class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label style-font-14">Expire Date</div>
+                                <div class="item-title item-label">Expire Date</div>
                                 <div class="item-input-wrap">
                                     <input type="text" placeholder="URL" value="10/10/2018">
                                 </div>
@@ -103,21 +76,18 @@
                         </li>
                         <li class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label style-font-14">Description</div>
+                                <div class="item-title item-label">Description</div>
                                 <div class="item-input-wrap">
                                     <div class="item-input-wrap">
-                                        <textarea placeholder="Description" class="resizable style-font-14">- K&iacute;ch thước m&agrave;n h&igrave;nh : 13,3 inch.
-- Độ ph&acirc;n giải m&agrave;n h&igrave;nh : 2,1 triệu điểm ảnh với t&ugrave;y chọn m&agrave;n h&igrave;nh FHD, l&ecirc;n đến 5,7 triệu điểm ảnh với t&ugrave;y chọn m&agrave;n h&igrave;nh QHD+
-- Bộ vi xử l&yacute; : Intel<sup>&reg;</sup> Core&trade; i7 thế hệ thứ 6
-- Thời lượng pin : L&ecirc;n đến 10 giờ
-- Trọng lượng : 1,27 kg
-- Độ d&agrave;y : 12,95 mm
-- Ổ lưu trữ : SSD 256 GB
-- Bộ nhớ : RAM 8 GB
-- &Acirc;m thanh : &Acirc;m thanh Bang &amp; Olufsen
-- Cổng kết nối : 3 cổng USB 3.0, HDMI, đầu đọc thẻ SD
-- Gi&aacute; khởi điểm : 24.990.000đ
-                                            </textarea>
+                                        <textarea placeholder="Description" class="resizable">- K&iacute;ch thước m&agrave;n h&igrave;nh : 13,3 inch. - Độ ph&acirc;n giải m&agrave;n
+                                            h&igrave;nh : 2,1 triệu điểm ảnh với t&ugrave;y chọn m&agrave;n h&igrave;nh FHD,
+                                            l&ecirc;n đến 5,7 triệu điểm ảnh với t&ugrave;y chọn m&agrave;n h&igrave;nh QHD+
+                                            - Bộ vi xử l&yacute; : Intel
+                                            <sup>&reg;</sup> Core&trade; i7 thế hệ thứ 6 - Thời lượng pin : L&ecirc;n đến 10 giờ
+                                            - Trọng lượng : 1,27 kg - Độ d&agrave;y : 12,95 mm - Ổ lưu trữ : SSD 256 GB -
+                                            Bộ nhớ : RAM 8 GB - &Acirc;m thanh : &Acirc;m thanh Bang &amp; Olufsen - Cổng
+                                            kết nối : 3 cổng USB 3.0, HDMI, đầu đọc thẻ SD - Gi&aacute; khởi điểm : 24.990.000đ
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -129,9 +99,11 @@
 
             <div class="block">
                 <div class="row">
-                        <div class="col"></div>
-                        <div class="col"><a href="/seller-list/" class="col button button-fill color-red">Back</a></div>
-                        <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <a href="/seller-list/" class="col button button-fill color-green">back</a>
+                    </div>
+                    <div class="col"></div>
                 </div>
             </div>
 

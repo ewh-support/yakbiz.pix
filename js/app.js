@@ -10,28 +10,7 @@ var app = new Framework7({
   // App root data
   data: function () {
     return {
-      // apibackend: 'http://103.199.18.44:2990/api',
-      // user: {
-      //   firstName: 'John',
-      //   lastName: 'Doe',
-      // },
-      // // Demo products for Catalog section
-      // products: [{
-      //     id: '1',
-      //     title: 'Apple iPhone 8',
-      //     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.'
-      //   },
-      //   {
-      //     id: '2',
-      //     title: 'Apple iPhone 8 Plus',
-      //     description: 'Velit odit autem modi saepe ratione totam minus, aperiam, labore quia provident temporibus quasi est ut aliquid blanditiis beatae suscipit odio vel! Nostrum porro sunt sint eveniet maiores, dolorem itaque!'
-      //   },
-      //   {
-      //     id: '3',
-      //     title: 'Apple iPhone X',
-      //     description: 'Expedita sequi perferendis quod illum pariatur aliquam, alias laboriosam! Vero blanditiis placeat, mollitia necessitatibus reprehenderit. Labore dolores amet quos, accusamus earum asperiores officiis assumenda optio architecto quia neque, quae eum.'
-      //   },
-      // ]
+
     };
   },
   // App root methods
@@ -62,7 +41,7 @@ var settingsView = app.views.create('#view-settings', {
 // axios.defaults.baseURL = apibackend;
 var pixUrl = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
 axios.defaults.baseURL = pixUrl;
-axios.defaults.headers.common['Authorization'] = localStorage.accessToken;
+//axios.defaults.headers.common['Authorization'] = localStorage.access_token;
 
 app.on('pageInit', function (page) {
   console.log('localStorage', localStorage);
@@ -76,9 +55,44 @@ app.on('pageInit', function (page) {
   }
 });
 
+//home button
+$$('#home_button').on('click', function (e) {
+  app.views.main.router.navigate('/');
+})
+
+$$('#reload-button').on('click', function (e) {
+  location.reload()
+})
+
+function clearData() {
+  localStorage.isAuthenticated = 'false';
+  localStorage.removeItem("user");
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("f7form-form-request");
+  localStorage.removeItem("user_type");
+  localStorage.removeItem("f7form-my-form-edit-product");
+}
+
+//clear data
+$$('#clear-button').on('click', function (e) {
+  console.log('localStorage', localStorage);
+  clearData();
+  // localStorage.isAuthenticated = 'false';
+  // localStorage.removeItem("user");
+  // localStorage.removeItem("access_token");
+  // localStorage.removeItem("f7form-form-request");
+  // localStorage.removeItem("user_type");
+  // localStorage.removeItem("f7form-my-form-edit-product");
+
+});
+
+//seller login button
 $$('#seller-button').on('click', function (e) {
   console.log('Login screen open');
-  if (localStorage.isAuthenticated === 'true')
+  if (localStorage.user_type == '1') {
+    clearData();
+    app.loginScreen.open('#my-login-screen');
+  } else if (localStorage.isAuthenticated === 'true')
     app.views.main.router.navigate('/seller-list/');
   else {
     app.loginScreen.open('#my-login-screen');
@@ -109,7 +123,27 @@ function login() {
     type: type,
     user_type: user_type
   };
-  console.log('credentials', credentials);
+  //console.log('credentials', credentials);
+
+  var notificationClickToClose = app.notification.create({
+    // icon: '<i class="icon demo-icon">7</i>',
+    title: 'Notification',
+    titleRightText: 'now',
+    subtitle: 'Login failed wrong username or password',
+    // text: 'Click me to close',
+    closeOnClick: true,
+    closeTimeout: 2000
+  })
+
+  var successNotification = app.notification.create({
+    // icon: '<i class="icon demo-icon">7</i>',
+    title: 'Notification',
+    titleRightText: 'now',
+    subtitle: 'Login successfully!',
+    // text: 'Click me to close',
+    closeOnClick: true,
+    closeTimeout: 2000
+  })
 
   axios.post('api/v1/auth/login', credentials).then(function (response) {
     console.log('response', response);
@@ -119,18 +153,36 @@ function login() {
       localStorage.isAuthenticated = 'true'; //là string, ko phải bool
       localStorage.access_token = data.access_token;
       localStorage.user = data.user_data.username;
+      localStorage.user_type = "2"; //buyer =1 , seller = 2
       //localStorage.ttl = data.ttl; //ttl: time to lease, thời gian mà accesstoken hết hạn
-      axios.defaults.headers.common['Authorization'] = localStorage.access_token;
+      //axios.defaults.headers.common['Authorization'] = localStorage.access_token;
 
+      var token = data.access_token;
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       //getUserInfo();
       console.log('local storage', localStorage);
       // Close login screen
       app.loginScreen.close('#my-login-screen');
+      successNotification.open();
     }
   }).catch(function (error) {
     console.log('err', error);
+    notificationClickToClose.open();
   });
 }
+
+//buyer
+$$('#buyer_button').on('click', function () {
+  console.log('BUYER | localStorage', localStorage);
+  if (localStorage.user_type == '2') {
+    clearData();
+    app.views.main.router.navigate('/buyer-login/');
+  } else if (localStorage.isAuthenticated === 'false')
+    app.views.main.router.navigate('/buyer-login/');
+  else
+    app.views.main.router.navigate('/buyer-main/');
+
+})
 
 // function getUserInfo() {
 //   console.log('getUserInfo()')

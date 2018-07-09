@@ -1,171 +1,161 @@
 <template>
-    <div class="page">
-        <div class="navbar bg-fff">
-            <div class="navbar-inner sliding row">
-                <div class="col-45">
-                    <div class="row">
-                        <div class="col-20">
-                            <div class="left">
-                                <a href="#" class="link back">
-                                    <img src="/img/icon-back.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-80">
-                            <div class="title color-222">Back</div>
-                        </div>
-                    </div>             
-                </div>   
-                <div class="col-55 fix-center-img">
-                    <img src="/img/icon-user.png" alt="">
-                </div>
-            </div>
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Back</span>
+          </a>
         </div>
-        <div class="page-content login-screen-content">
-            <div class="login-screen-title text-left"><a class="style-tag-a" title="">Sign up Seller Account</a></div>
-            <div class="block">
-                <form class="list form-store-data" id="form-sign-up-seller">
-                    <ul>
-                        <li class="item-content item-input mg-b-20">
-                            <div class="row w-100">
-                                <div class="col-30">
-                                    <div class="item-title item-label style_lable_sign style-font-14">User Name</div>
-                                </div>
-                                <div class="col-70">
-                                    <div class="item-input-wrap">
-                                        <input class="style-input mg-r-15 input-with-value style-font-14" type="text" name="username" placeholder="Yak Cap">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input mg-b-20">
-                            <div class="row w-100">
-                                <div class="col-30">
-                                    <div class="item-title item-label style_lable_sign style-font-14">Company</div>
-                                </div>
-                                <div class="col-70">
-                                    <div class="item-input-wrap">
-                                        <input class="style-input mg-r-15 input-with-value style-font-14" type="text" name="company" placeholder="YAK Capital">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input mg-b-20">
-                            <div class="row w-100">
-                                <div class="col-30">
-                                    <div class="item-title item-label style_lable_sign style-font-14">Address</div>
-                                </div>
-                                <div class="col-70">
-                                    <div class="item-input-wrap">
-                                        <input class="style-input mg-r-15 input-with-value style-font-14" type="text" name="address" placeholder="#12, Street 348, Phum 4, Sangkat Toul Svay Prey 1 Khan Chamkarmon Phnom Penh">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input mg-b-20">
-                            <div class="row w-100">
-                                <div class="col-30">
-                                    <div class="item-title item-label style_lable_sign style-font-14">Phone</div>
-                                </div>
-                                <div class="col-70">
-                                    <div class="item-input-wrap">
-                                        <input class="style-input mg-r-15 input-with-value style-font-14" type="text" name="phone" placeholder="092 77 21 46">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input mg-b-20">
-                            <div class="row w-100">
-                                <div class="col-30">
-                                    <div class="item-title item-label style_lable_sign style-font-14">Website</div>
-                                </div>
-                                <div class="col-70">
-                                    <div class="item-input-wrap">
-                                        <input class="style-input mg-r-15 input-with-value style-font-14" type="text" name="website" placeholder="yakkh.com">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input mg-b-20">
-                            <div class="row w-100">
-                                <div class="col-30">
-                                    <div class="item-title item-label style_lable_sign style-font-14">Password</div>
-                                </div>
-                                <div class="col-70">
-                                    <div class="item-input-wrap">
-                                        <input class="style-input mg-r-15 input-with-value style-font-14" type="text" name="password" placeholder="Yak123">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-content item-input mg-b-20">
-                            <div class="row w-100">
-                                <div class="col-30">
-                                    <div class="item-title item-label style_lable_sign style-font-14">Confirm password</div>
-                                </div>
-                                <div class="col-70">
-                                    <div class="item-input-wrap">
-                                        <input class="style-input mg-r-15 input-with-value style-font-14" type="text" name="confirm-password" placeholder="Yak123">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </form>
-            </div>
-            <div class="block ">
-                <div class="row">
-                    <div class="col-50 ">
-                        <a href="/seller-list/" class="button button-fill color-green style-font-14">Sign Up</a>
-                    </div>
-                    <div class="col-10"></div>
-                    <div class="col-40">
-                        <a href="#" class="button button-fill popup-close color-gray" data-popup="#my-signup-screen style-font-14">Close</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="title">Sign up Seller Account</div>
+      </div>
     </div>
+    <div class="page-content">
+      <div class="block-title">Sign up Seller Account</div>
+      <div class="block">
+        <form class="list form-store-data" id="form-sign-up-seller">
+          <ul>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">User Name</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="username" placeholder="Yak Cap">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Company</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="company" placeholder="YAK Capital">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Address</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="address" placeholder="#12, Street 348, Phum 4, Sangkat Toul Svay Prey 1 Khan Chamkarmon Phnom Penh">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Phone</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="phone" placeholder="092 77 21 46">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Website</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="website" placeholder="yakkh.com">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Password</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="password" placeholder="Yak123">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Confirm password</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="confirm_password" placeholder="Yak123">
+                </div>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <div class="block ">
+        <div class="row">
+          <div class="col-50 ">
+            <a href="" class="button button-fill color-green" id="convert-form-to-data">Sign Up</a>
+          </div>
+          <div class="col-10"></div>
+          <div class="col-40">
+            <a href="#" class="button button-fill popup-close color-gray" data-popup="#my-signup-screen">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
-return {
+  return {
     on: {
-        pageInit: function(e, page) {
-            // Create notification with click to close
-            var notificationClickToClose = app.notification.create({
-                // icon: '<i class="icon demo-icon">7</i>',
-                title: 'Notification',
-                titleRightText: 'now',
-                subtitle: 'Sign up failed!',
-                text: 'Click me to close',
-                closeOnClick: true,
+      pageInit: function (e, page) {
+        // Create notification with click to close
+        var notificationSuccess = app.notification.create({
+          // icon: '<i class="icon demo-icon">7</i>',
+          title: 'Notification',
+          titleRightText: 'now',
+          subtitle: 'Sign up successfully!',
+          text: 'Click me to close',
+          closeOnClick: true,
+          closeTimeout: 2000
+        })
+
+        var notificationFailed = app.notification.create({
+          // icon: '<i class="icon demo-icon">7</i>',
+          title: 'Notification',
+          titleRightText: 'now',
+          subtitle: 'Sign up failed!',
+          text: 'Click me to close',
+          closeOnClick: true,
+          closeTimeout: 2000
+        })
+
+        var notificationMatch = app.notification.create({
+          // icon: '<i class="icon demo-icon">7</i>',
+          title: 'Notification',
+          titleRightText: 'now',
+          subtitle: 'Password and confirm password not match!',
+          text: 'Click me to close',
+          closeOnClick: true,
+          closeTimeout: 2000
+        })
+
+        $$('#convert-form-to-data').on('click', function () {
+          console.log('POST');
+          var formData = app.form.convertToData('#form-sign-up-seller');
+          formData.user_type = 2;
+          formData.type = "username";
+
+          console.log(JSON.stringify(formData));
+
+          if (formData.password === formData.confirm_password) {
+            // axios.defaults.baseURL = 'http://128.199.153.64:3500/api';
+            axios.defaults.baseURL =
+              'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+            axios.post('/api/v1/auth/register', formData).then(function (response) {
+              console.log('res', response);
+              app.loginScreen.open('#my-login-screen');
+              notificationSuccess.open();
+
+            }).catch(function (error) {
+              console.log('err', error);
+              app.loginScreen.open('#my-login-screen');
+              notificationFailed.open();
             })
+          } else {
+            console.log('not match');
+            app.loginScreen.open('#my-login-screen');
+            notificationMatch.open();
+          }
 
-            $$('.convert-form-to-data').on('click', function() {
-                console.log('POST');
-                var formData = app.form.convertToData('#form-sign-up-seller');
-                formData.user_type = 2;
-                console.log(JSON.stringify(formData));
-                if (formData.password === formData.confirm_password) {
-                    // axios.defaults.baseURL = 'http://128.199.153.64:3500/api';
-                    axios.defaults.baseURL =
-                        'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
-                    axios.post('/api/v1/auth/register', formData)
-                        .then(function(response) {
-                            console.log('res', response);
-                        })
-                        .catch(function(error) {
-                            console.log('err', error);
-                        })
-                } else {
-                    console.log('not match');
-                    notificationClickToClose.open();
-                }
-
-            });
+        });
 
 
-        }
+      }
     }
-}
+  }
 </script>
