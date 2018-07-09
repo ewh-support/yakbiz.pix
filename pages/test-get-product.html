@@ -1,0 +1,55 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="back link">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">Test GET</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block block-strong row">
+                <div class="col"></div>
+                <div class="col">
+                    <a class="button button-fill convert-form-to-data" href="#">GET</a>
+                </div>
+                <div class="col"></div>
+            </div>
+
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        // Component Data
+        data: function() {
+            // Must return an object
+            return {
+
+            }
+        },
+        on: {
+            pageInit: function(e, page) {
+                $$('.convert-form-to-data').on('click', function() {
+                    // axios.defaults.baseURL = 'http://128.199.153.64:3500/api';
+                    console.log('GET');
+                    axios.defaults.baseURL = 'https://mobile.app.webdigital.vn/demo/CAMBODIA_YAK_BIZ/CODE';
+                    // const tokenStr = 'd9b99b75a96d03d09c67d5330063cec9d669f5fbf96c4c6647e8ab11e041862b3a0ec5b395c1a5d6ed7ca812c3114a815493e3a479327987044ab10c127eff64a41df39bf9a07d2cf7a447263e0180b537da847d87a21a0b52c64e8d';
+                    axios.get('Products')
+                        .then(function(response) {
+                            console.log('res');
+                            console.log('res', response);
+                            data.push(response.data);
+                        })
+                        .catch(function(error) {
+                            console.log('err', error);
+                        })
+                });
+            },
+        }
+    }
+</script>

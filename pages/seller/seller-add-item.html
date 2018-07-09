@@ -15,17 +15,15 @@
             <div class="list inline-labels no-hairlines-md">
                 <form class="list form-store-data" id="form-request">
                     <ul>
-
                         <li class="item-content item-input">
                             <div class="item-inner">
                                 <div class="item-title item-label">Category</div>
-                                <div class="item-input-wrap input-dropdown-wrap" id="">
-                                    <select name="category_id" placeholder="Please choose..." id="category-button">
-                                        {{#each data_category}}
-                                        <option value="{{id}}">{{name}}</option>
-                                        {{/each}}
+                                <div class="item-input-wrap input-dropdown-wrap">
+                                    <select placeholder="Please choose...">
+                                        <option value="">Option1</option>
+                                        <option value="">Option2</option>
+                                        <option value="">Option3</option>
                                     </select>
-
                                 </div>
                             </div>
                         </li> 
@@ -33,9 +31,11 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Sub Category</div>
                                 <div class="item-input-wrap input-dropdown-wrap">
-                                    <select name="sub_category_id" placeholder="Please choose..." id="category-category-button">
-                                        <!-- <option value="{{id}}">{{name}}</option> -->
-
+                                    <select placeholder="Please choose...">
+                                        <option value="">Option1</option>
+                                        <option value="">Option2</option>
+                                        <option value="">Option3</option>
+                                        <option value="">Option4</option>
                                     </select>
                                 </div>
                             </div>
@@ -44,16 +44,16 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Name</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" name="name" placeholder="Name">
+                                    <input type="text" placeholder="Name">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
                         </li>
                         <li class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label"></div>
+                                <div class="item-title item-label">Model</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" name="model" placeholder="Model">
+                                    <input type="text" placeholder="Model">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Measure</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" name="measure" placeholder="Measure">
+                                    <input type="text" placeholder="Measure">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Code</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" name="code" placeholder="Code">
+                                    <input type="text" placeholder="Code">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Price</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" name="price" placeholder="Price">
+                                    <input type="text" placeholder="Price">
                                     <span class="input-clear-button"></span>
                                 </div>
                             </div>
@@ -91,11 +91,11 @@
                                 <div class="item-input-wrap">
                                     <p>
                                         <label class="radio">
-                                            <input type="radio" name="vat" value="1">
+                                            <input type="radio" name="demo-radio-inline">
                                             <i class="icon-radio"></i>
                                         </label> Yes
                                         <label class="radio">
-                                            <input type="radio" name="vat" value="0">
+                                            <input type="radio" name="demo-radio-inline">
                                             <i class="icon-radio"></i>
                                         </label> No</p>
                                 </div>
@@ -106,7 +106,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Description</div>
                                 <div class="item-input-wrap">
-                                    <textarea name="description" placeholder="Description"></textarea>
+                                    <textarea placeholder="Description"></textarea>
                                 </div>
                             </div>
                         </li>
@@ -135,59 +135,6 @@
         },
         on: {
             pageInit: function (e, page) {
-                // Create notification with click to close
-                var notificationSuccess = app.notification.create({
-                    // icon: '<i class="icon demo-icon">7</i>',
-                    title: 'Notification',
-                    titleRightText: 'now',
-                    subtitle: 'Your product was created successfully!',
-                    text: 'Click me to close',
-                    closeOnClick: true,
-                    closeTimeout: 2000
-                })
-
-                var notificationFailed = app.notification.create({
-                    // icon: '<i class="icon demo-icon">7</i>',
-                    title: 'Notification',
-                    titleRightText: 'now',
-                    subtitle: 'Your product was created failed!',
-                    text: 'Click me to close',
-                    closeOnClick: true,
-                    closeTimeout: 2000
-                })
-
-                //on change when select category
-                $$('#category-button').change(function () {
-                    let category_id = $$('#category-button').val();
-                    //get sub category
-                    console.log('category_id', category_id);
-
-                    axios.get('api/v1/common/categories/' + category_id).then(res => {
-                        let data = res.data.data;
-                        console.log('GET data_sub_category', data);
-
-                        //sub_category_id
-                        //category-category-button
-
-                        var subCategoryList = document.getElementById("category-category-button");
-                        console.log('subCategoryList', subCategoryList);
-                        while (subCategoryList.options.length) {
-                            subCategoryList.remove(0);
-                        }
-                        for (let i = 0; i < data.length; i++) {
-                            console.log('data[i]', data[i]);
-                            var value = new Option(data[i].name, data[i].id);
-                            console.log('dt', value);
-                            subCategoryList.options.add(value);
-                        }
-
-
-                    }).catch(err => {
-                        console.log('err', err);
-                    })
-
-
-                })
 
                 $$('.convert-form-to-data').on('click', function () {
                         console.log('POST');
@@ -195,5 +142,4 @@
                 }
             }
         }
-    }
 </script>
